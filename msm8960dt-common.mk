@@ -206,7 +206,8 @@ PRODUCT_PACKAGES += \
     hostapd \
     libQWiFiSoftApCfg \
     wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant.conf \
+    wificond
 
 #wifi
 PRODUCT_COPY_FILES += \
