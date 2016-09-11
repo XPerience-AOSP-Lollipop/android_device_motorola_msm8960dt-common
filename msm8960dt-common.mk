@@ -85,10 +85,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf \
     $(LOCAL_PATH)/configs/snd_soc_msm_2x:system/etc/snd_soc_msm/snd_soc_msm_2x
 
-#Torch
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/base.apk:system/app/GhostTorch/GhostTorch.apk
-
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8960 \
