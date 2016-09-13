@@ -101,10 +101,10 @@ TARGET_NOT_USE_GZIP_RECOVERY_RAMDISK := true
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril/
 
 # SELinux
-#-include device/qcom/sepolicy/sepolicy.mk
+-include device/qcom/sepolicy/sepolicy.mk
 
 #BOARD_SEPOLICY_DIRS += \
-#    $(LOCAL_PATH)/sepolicy
+    $(LOCAL_PATH)/sepolicy
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
