@@ -182,6 +182,10 @@ PRODUCT_PACKAGES += \
     libcurl \
     libxml2
 
+# Telephony-ext
+PRODUCT_PACKAGES += telephony-ext
+PRODUCT_BOOT_JARS += telephony-ext
+
 # Wifi
 PRODUCT_PACKAGES += \
     hostapd \

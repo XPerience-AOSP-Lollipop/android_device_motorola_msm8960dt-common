@@ -457,7 +457,7 @@ service mmi-boot-sh /system/bin/sh /system/etc/init.mmi.boot.sh
     seclabel u:r:mmi_boot:s0
     oneshot
 
-service_redefine ril-daemon /system/bin/rild
+service ril-daemon /system/bin/rild
     class main
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
