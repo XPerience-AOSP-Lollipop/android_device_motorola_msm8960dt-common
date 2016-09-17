@@ -113,9 +113,9 @@ TARGET_SYSTEM_PROP += device/motorola/msm8960dt-common/system.prop
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril/
 
 # SELinux
-#-include device/qcom/sepolicy/sepolicy.mk
+-include device/qcom/sepolicy/sepolicy.mk
 
-#BOARD_SEPOLICY_DIRS += \
+BOARD_SEPOLICY_DIRS += \
     $(LOCAL_PATH)/sepolicy
 
 # Wifi
