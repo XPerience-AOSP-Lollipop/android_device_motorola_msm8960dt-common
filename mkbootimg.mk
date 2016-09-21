@@ -51,8 +51,12 @@ bootimage-nodeps: $(MKBOOTIMG)
 	$(hide) $(call assert-max-image-size,$(INSTALLED_BOOTIMAGE_TARGET),$(BOARD_BOOTIMAGE_PARTITION_SIZE))
 	@echo -e ${CL_INS}"Made boot image: $@"${CL_RST}
 
-$(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(INSTALLED_DTIMAGE_TARGET) $(recovery_ramdisk) $(recovery_kernel)
-	$(call pretty,"Target recovery image: $@")
+$(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) $(INSTALLED_DTIMAGE_TARGET) \
+		$(LZMA_RAMDISK) \
+		$(recovery_uncompressed_ramdisk)
+	@echo "----- Making compressed recovery ramdisk ------"
+	$(hide) $(LZMA_BIN) < $(recovery_uncompressed_ramdisk) > $(recovery_ramdisk)
+	@echo "----- Making recovery image ------"
 	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $@
-	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE))
-	@echo -e ${CL_CYN}"Made recovery image: $@"${CL_RST}
+	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE),raw)
+	@echo "Made recovery image: $@"
