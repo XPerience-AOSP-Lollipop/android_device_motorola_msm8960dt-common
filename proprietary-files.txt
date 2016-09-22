@@ -114,6 +114,8 @@ lib/libqc-opt.so
 
 # DRM
 bin/qseecomd
+vendor/lib/libssd.so
+vendor/lib/librpmb.so
 lib/libdrmfs.so
 lib/libdrmtime.so
 lib/libQSEEComAPI.so
