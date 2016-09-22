@@ -114,8 +114,6 @@ lib/libqc-opt.so
 
 # DRM
 bin/qseecomd
-lib/libdrmdecrypt.so
-lib/libdrmdiag.so
 lib/libdrmfs.so
 lib/libdrmtime.so
 lib/libQSEEComAPI.so
@@ -245,7 +243,7 @@ lib/libTimeService.so
 # Widevine
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/libdrmdecrypt.so
-vendor/lib/libwvdrm_L1.so
+vendor/lib/libwvdrm_L3.so
 vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/mediadrm/libwvdrmengine.so
