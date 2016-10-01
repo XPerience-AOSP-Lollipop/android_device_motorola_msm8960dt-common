@@ -49,13 +49,6 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02200000
 TARGET_KERNEL_SOURCE := kernel/motorola/ghost
 TARGET_KERNEL_CONFIG := msm8960dt_mmi_defconfig
 
-WLAN_MODULES:
-	mkdir -p $(KERNEL_MODULES_OUT)/prima
-	mv $(KERNEL_MODULES_OUT)/wlan.ko $(KERNEL_MODULES_OUT)/prima/prima_wlan.ko
-	ln -sf /system/lib/modules/prima/prima_wlan.ko $(TARGET_OUT)/lib/modules/wlan.ko
-
-TARGET_KERNEL_MODULES += WLAN_MODULES
-
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_FLUENCE_INCALL := true
@@ -106,13 +99,13 @@ BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril/
     $(LOCAL_PATH)/sepolicy
 
 # Wifi
-BOARD_HAS_QCOM_WLAN := true
-BOARD_HAS_QCOM_WLAN_SDK := true
-BOARD_WLAN_DEVICE := qcwcn
-BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
-WIFI_DRIVER_MODULE_NAME := "wlan"
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
-WPA_SUPPLICANT_VERSION := VER_0_8_X
+BOARD_HAS_QCOM_WLAN                 := true
+BOARD_HAS_QCOM_WLAN_SDK             := true
+BOARD_HOSTAPD_DRIVER                := NL80211
+BOARD_HOSTAPD_PRIVATE_LIB           := lib_driver_cmd_qcwcn
+BOARD_WLAN_DEVICE                   := qcwcn
+BOARD_WPA_SUPPLICANT_DRIVER         := NL80211
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB    := lib_driver_cmd_qcwcn
+WIFI_DRIVER_FW_PATH_AP              := "ap"
+WIFI_DRIVER_FW_PATH_STA             := "sta"
+WPA_SUPPLICANT_VERSION              := VER_0_8_X
