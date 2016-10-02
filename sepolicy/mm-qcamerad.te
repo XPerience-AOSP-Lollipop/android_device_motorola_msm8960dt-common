@@ -1,4 +1,3 @@
-#allow mm-qcamerad system_file:file execmod; # for libl6lencgain and many others
 # WARNING: these sockets shouldn't be under /data
 allow mm-qcamerad system_data_file:dir w_dir_perms;
 allow mm-qcamerad system_data_file:sock_file unlink;
