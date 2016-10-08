@@ -27,6 +27,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.bluetooth.sap=false
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    qcom.bluetooth.soc=smd \
     ro.bluetooth.hfp.ver=1.6 \
     ro.qualcomm.bt.hci_transport=smd
 
