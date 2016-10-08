@@ -121,6 +121,9 @@
 #define AID_RFS           3012  /* Remote Filesystem for peripheral processors */
 #define AID_RFS_SHARED    3013  /* Shared files for Remote Filesystem for peripheral processors  */
 
+#define AID_QCOM_DIAG     3014  /* can read/write /dev/diag */
+#define AID_IMS           3015  /* can read/write /dev/socket/imsrtp */
+
 /* Motorola IDs */
 #define AID_MOT_ACCY      9000  /* access to accessory */
 #define AID_MOT_PWRIC     9001  /* power IC */
@@ -138,6 +141,10 @@
 #define AID_SPRINT_EXTENSION 9013  /* IKASANTISPRINT-149 sprint extension service */
 #define AID_MOT_DBVC      9014  /* mot_dbvc - This group is used to access DataBlock feature related data */
 /* Motorola IDs */
+#define AID_MOT_MOD       9020  /* can interact with motorola mod HW */
+
+#define AID_MOT_SHARED    9323  /* motorola shared uid, IKSWM-342 */
+#define AID_MOT_COMMON    9341  /* motorola common uid, IKSWM-342 */
 
 #define AID_EVERYBODY     9997  /* shared between all apps in the same profile */
 #define AID_MISC          9998  /* access to misc storage */
@@ -232,8 +239,10 @@ static const struct android_id_info android_ids[] = {
     { "net_bw_stats",  AID_NET_BW_STATS, },
     { "net_bw_acct",   AID_NET_BW_ACCT, },
     { "net_bt_stack",  AID_NET_BT_STACK, },
-    { "readproc",      AID_READPROC, },
+	{"readproc",      AID_READPROC, },
     { "wakelock",      AID_WAKELOCK, },
+    { "qcom_diag",     AID_QCOM_DIAG, },
+    { "ims",           AID_IMS, },
     
     { "sensors",       AID_SENSORS, },
     /* Motorola IDs */
@@ -253,6 +262,10 @@ static const struct android_id_info android_ids[] = {
     { "sprint_extension", AID_SPRINT_EXTENSION, },
     { "mot_dbvc",      AID_MOT_DBVC, },
     /* Motorola IDs */
+    { "mot_mod",       AID_MOT_MOD, },
+
+    { "mot_shared",    AID_MOT_SHARED, },
+    { "mot_common",    AID_MOT_COMMON, },
     
     { "rfs",           AID_RFS, },
     { "rfs_shared",    AID_RFS_SHARED, },
