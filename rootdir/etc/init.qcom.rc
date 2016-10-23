@@ -462,6 +462,13 @@ service mmi-boot-sh /system/bin/sh /system/etc/init.mmi.boot.sh
     seclabel u:r:mmi_boot:s0
     oneshot
 
+service cameraserver /system/bin/cameraserver
+    class main
+    user cameraserver
+    group audio camera drmrpc inet media mediadrm net_bt net_bt_admin net_bw_acct system
+    ioprio rt 4
+    writepid /dev/cpuset/foreground/tasks
+
 service ril-daemon /system/bin/rild
     class main
     socket rild stream 660 root radio
