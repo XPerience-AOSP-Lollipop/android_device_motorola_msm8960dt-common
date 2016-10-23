@@ -9,7 +9,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=false \
-    persist.audio.handset.mic=digital \
+    persist.audio.handset.mic=analog  \
     ro.qc.sdk.audio.fluencetype=fluence \
     use.dedicated.device.for.voip=true \
     use.voice.path.for.pcm.voip=true \
@@ -49,7 +49,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1 \
-    persist.camera.HAL3.enabled=0 \
     media.stagefright.legacyencoder=true \
     media.stagefright.less-secure=true
 
