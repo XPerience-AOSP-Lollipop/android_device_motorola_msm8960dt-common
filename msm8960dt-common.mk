@@ -93,6 +93,7 @@ PRODUCT_PACKAGES += \
     libshim_mdmcutback \
     libshim_qcopt \
     libshim_ril \
+    libshims_thermal \
     libstlport \
     rild_socket
 
