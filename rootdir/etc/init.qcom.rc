@@ -471,6 +471,7 @@ service ril-daemon /system/bin/rild
     group radio cache inet misc audio sdcard_rw qcom_oncrpc qcom_diag log net_raw diag
 
 on property:sys.boot_completed=1
+    restart media
     start mmi-touch-sh
 
 service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh
