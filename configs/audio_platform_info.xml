@@ -50,7 +50,7 @@
         <device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="4" />
         <device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="56" />
         <device name="SND_DEVICE_IN_BT_SCO_MIC" acdb_id="45" />
-        <device name="SND_DEVICE_IN_VOIP_HANDSET_MIC" acdb_id="57" />
+        <device name="SND_DEVICE_IN_VOIP_HANDSET_MIC" acdb_id="4" />
         <device name="SND_DEVICE_IN_VOIP_SPEAKER_MIC" acdb_id="58" />
         <device name="SND_DEVICE_IN_VOIP_HEADSET_MIC" acdb_id="59" />
     </acdb_ids>
