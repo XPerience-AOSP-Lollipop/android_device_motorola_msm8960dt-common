@@ -224,7 +224,7 @@
     </path>
 
     <!-- Voice Call IPLine -->
-    <path name="voip-call ipline">
+    <path name="voip-call ipmic">
         <path name="voip-call ipspeaker" />
     </path>
 
@@ -296,7 +296,7 @@
         <ctl name="VoLTE_Tx Mixer SLIM_0_TX_VoLTE" value="1" />
     </path>
 
-    <path name="volte-call line">
+    <path name="volte-call mic">
         <ctl name="VOC_EXT_EC MUX" value="1" />
         <ctl name="MI2S_RX_Voice Mixer VoLTE" value="1" />
         <ctl name="VoLTE_Tx Mixer SLIM_0_TX_VoLTE" value="1" />
@@ -396,7 +396,6 @@
         <path name="handset" />
     </path>
 
-    <!--SPEAKER-->
     <path name="speaker">
         <ctl name="HPL AIC Output Mixer L_DAC Switch" value="1" />
         <ctl name="HPR AIC Output Mixer R_DAC Switch" value="1" />
@@ -438,8 +437,8 @@
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="HPL AIC Output Mixer L_DAC Switch" value="1" />
         <ctl name="HPR AIC Output Mixer R_DAC Switch" value="1" />
-        <ctl name="AIC DAC Playback SwitchL" value="1" />
-        <ctl name="AIC DAC Playback SwitchR" value="1" />
+        <ctl name="AIC DAC Playback SwitchL" value="0" />
+        <ctl name="AIC DAC Playback SwitchR" value="0" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="HPHL DAC Switch" value="1" />
@@ -448,5 +447,78 @@
         <ctl name="HPHR Volume" value="80" />
         <ctl name="RX1 Digital Volume" value="68" />
         <ctl name="RX2 Digital Volume" value="68" />
+    </path>
+
+    <!-- Headset -->
+    <path name="headset-mic">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC8" />
+        <ctl name="DEC8 MUX" value="ADC2" />
+        <ctl name="TX8 HPF cut off" value="MIN_3DB_75Hz" />
+        <ctl name="DEC8 Volume" value="69" />
+        <ctl name="ADC2 Volume" value="50" />
+    </path>
+
+    <!-- Voice Headset -->
+    <path name="voice-headset-mic">
+        <path name="headset-mic" />
+    </path>
+
+   <!-- Handset -->
+    <path name="handset-mic">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC4" />
+        <ctl name="DEC4 MUX" value="ADC3" />
+        <ctl name="TX4 HPF cut off" value="MIN_3DB_75Hz" />
+        <ctl name="DEC4 Volume" value="70" />
+        <ctl name="ADC3 Volume" value="100" />
+        <ctl name="MICBIAS1 CAPLESS Switch" value="0" />
+    </path>
+
+    <!-- Camcorder Tx -->
+    <path name="camcorder-mic">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC3" />
+        <ctl name="DEC3 MUX" value="ADC4" />
+        <ctl name="DEC3 Volume" value="76" />
+        <ctl name="ADC4 Volume" value="100" />
+        <ctl name="MICBIAS3 CAPLESS Switch" value="0" />
+    </path>
+
+    <!-- Voice Recognition -->
+    <path name="voice-rec-mic">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC6" />
+        <ctl name="DEC6 MUX" value="ADC1" />
+        <ctl name="DEC6 Volume" value="68" />
+        <ctl name="ADC1 Volume" value="66" />
+        <ctl name="MICBIAS1 CAPLESS Switch" value="0" />
+    </path>
+
+    <!-- TTY Handset Tx -->
+    <path name="voice-tty-vco-handset-mic">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC4" />
+        <ctl name="DEC4 MUX" value="ADC3" />
+        <ctl name="DEC4 Volume" value="70" />
+        <ctl name="ADC3 Volume" value="100" />
+        <ctl name="MICBIAS1 CAPLESS Switch" value="0" />
+    </path>
+
+    <!-- Line -->
+    <path name="speaker-mic">
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
+        <ctl name="SLIM_0_TX Channels" value="One" />
+        <ctl name="SLIM TX7 MUX" value="DEC4" />
+        <ctl name="DEC4 MUX" value="ADC3" />
+        <ctl name="TX4 HPF cut off" value="MIN_3DB_75Hz" />
+        <ctl name="DEC4 Volume" value="68" />
+        <ctl name="ADC3 Volume" value="100" />
+        <ctl name="MICBIAS1 CAPLESS Switch" value="0" />
     </path>
 </mixer>
