@@ -5,12 +5,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
     lpa.decode=true \
-    persist.audio.vr.enable=false \
     persist.audio.fluence.voicecall=true \
     persist.audio.fluence.voicerec=false \
     persist.audio.fluence.speaker=true \
-    persist.audio.handset.mic=digital \
-    ro.qc.sdk.audio.fluencetype=fluence \
+    ro.qc.sdk.audio.fluencetype=none \
     audio.offload.disable=1 \
     qcom.hw.aac.encoder=true \
     mm.enable.smoothstreaming=true

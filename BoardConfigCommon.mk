@@ -50,14 +50,8 @@ TARGET_KERNEL_CONFIG       := msm8960dt_mmi_defconfig
 
 # Audio
 BOARD_USES_ALSA_AUDIO               := true
-BOARD_USES_LEGACY_ALSA_AUDIO 	    := true
-BOARD_USES_FLUENCE_INCALL           := true
-BOARD_USES_SEPERATED_AUDIO_INPUT    := true
-BOARD_USES_SEPERATED_VOICE_SPEAKER  := true
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT 	    := true
 USE_CUSTOM_AUDIO_POLICY             := 1
-USE_LEGACY_AUDIO_POLICY             := true
-QCOM_MULTI_VOICE_SESSION_ENABLED    := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH        := true

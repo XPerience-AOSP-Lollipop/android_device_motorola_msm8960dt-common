@@ -27,6 +27,7 @@
 <audio_platform_info>
     <acdb_ids>
         <!-- Output devices -->
+        <device name="SND_DEVICE_OUT_HANDSET" acdb_id="7" />
         <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="15" />
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" acdb_id="15" />
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HDMI" acdb_id="15" />
@@ -61,9 +62,15 @@
     <pcm_ids>
         <usecase name="USECASE_AUDIO_PLAYBACK_LOW_LATENCY" type="out" id="14" />
         <usecase name="USECASE_VOICE_CALL" type="out" id="12" />
+        <usecase name="USECASE_VOLTE_CALL" type="in" id="13" />
+        <usecase name="USECASE_VOLTE_CALL" type="out" id="13" />
     </pcm_ids>
 
     <device_names>
-        <!-- empty -->
+        <device name="SND_DEVICE_OUT_VOICE_SPEAKER" alias="speaker" />
+        <device name="SND_DEVICE_OUT_VOIP_SPEAKER" alias="speaker" />
+        <device name="SND_DEVICE_IN_VOICE_DMIC" alias="dmic-endfire" />
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" alias="voice-speaker-mic" />
+        <device name="SND_DEVICE_IN_HANDSET_STEREO_DMIC" alias="handset-mic" />
     </device_names>
 </audio_platform_info>
