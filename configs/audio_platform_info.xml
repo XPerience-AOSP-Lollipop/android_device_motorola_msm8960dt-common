@@ -78,6 +78,12 @@
     </backend_names>
 
     <pcm_ids>
+        <usecase name="USECASE_AUDIO_PLAYBACK_LOW_LATENCY" type="out" id="14" />
+        <usecase name="USECASE_AUDIO_RECORD_LOW_LATENCY" type="in" id="14" />
+        <usecase name="USECASE_VOICE_CALL" type="in" id="12" />
+        <usecase name="USECASE_VOICE_CALL" type="out" id="12" />
+        <usecase name="USECASE_VOLTE_CALL" type="in" id="13" />
+        <usecase name="USECASE_VOLTE_CALL" type="out" id="13" />
     </pcm_ids>
 
     <device_names>
