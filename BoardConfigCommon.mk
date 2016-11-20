@@ -60,8 +60,6 @@ BLUETOOTH_HCI_USE_MCT       := true
 
 #Charger
 BACKLIGHT_PATH                      :=/sys/class/backlight/lcd-backlight/brightness
-BOARD_CHARGER_ENABLE_SUSPEND        := true
-BOARD_NO_CHARGER_LED                := true
 BOARD_CHARGER_DISABLE_INIT_BLANK    := true
 
 # Camera

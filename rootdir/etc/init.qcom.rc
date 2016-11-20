@@ -197,7 +197,7 @@ on post-fs-data
     # CM additions
 
     # directory for charge_only_mode
-    mkdir /data/com 0770 system root
+    # mkdir /data/com 0770 system root
 
     # chown WCNSS_qcom_wlan_nv.bin to wifi
     chown wifi wifi /persist/WCNSS_qcom_wlan_nv.bin
@@ -605,9 +605,9 @@ on start-charging
     chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_usb_suspend
     chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_fail_clear
     start batt_health
-    start charge_only_mode
 
 service charger /charger
     class charger
     group log
     seclabel u:r:healthd:s0
+

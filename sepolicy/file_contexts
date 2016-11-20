@@ -24,10 +24,6 @@
 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/pcb_temp                u:object_r:sysfs_batt_health:s0
 /sys/module/pm8921_bms/parameters(/.*)?                                             u:object_r:sysfs_batt_health:s0
 
-# charge_only_mode
-/system/bin/charge_only_mode                                                        u:object_r:charge_only_mode_exec:s0
-/data/com(/.*)?                                                                     u:object_r:charge_only_mode_data_file:s0
-
 # Bluetooth
 /dev/smd3                                                                           u:object_r:hci_attach_dev:s0
 /persist/.bt_nv.bin                                                                 u:object_r:persist_bluetooth_file:s0
