@@ -403,6 +403,9 @@ on boot
     chown mot_tcmd mot_tcmd /sys/module/msp430/parameters/irq_disable
     chmod 0660 /sys/module/msp430/parameters/irq_disable
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
 # Services start here
 
 service adspd /system/bin/adspd /dev/ttyHS3
