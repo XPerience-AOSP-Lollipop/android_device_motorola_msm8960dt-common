@@ -121,7 +121,7 @@
     <!-- The following use case uses MI2S_RX_VOICE & PRI_TX_VOICE and -->
     <!-- maps to AUDIO_HAL_PLUGIN_USECASE_CS_VOICE_CALL  -->
     <path name="voice-call">
-        <ctl name="MI2S_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="PRI_RX_Voice Mixer CSVoice" value="1" />
 		<ctl name="Voice_Tx Mixer PRI_TX_Voice" value="1" />
     </path>
 
