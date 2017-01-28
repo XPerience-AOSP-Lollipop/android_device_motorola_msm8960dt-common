@@ -3,3 +3,5 @@ type bootmodem_exec, exec_type, file_type;
 init_daemon_domain(bootmodem)
 
 allow bootmodem self:socket create;
+allow bootmodem sysfs:dir { read open };
+allow bootmodem sysfs:file { read open };
