@@ -69,3 +69,10 @@
 # WiFi
 /persist/WCNSS_qcom_wlan.*                                                          u:object_r:persist_wifi_file:s0
 /system/etc/init\.qcom\.wifi\.sh                                                    u:object_r:wcnss_service_exec:s0
+
+
+# Gpu
+/dev/kgsl-2d0                                                                     u:object_r:gpu_device:s0
+/dev/kgsl-2d1    																  u:object_r:gpu_device:s0
+/sys/devices/platform/kgsl-3d0\.0/kgsl/kgsl-3d0/gpuclk                            u:object_r:sysfs_thermal:s0
+/sys/devices/platform/kgsl-3d0\.0/kgsl/kgsl-3d0/max_gpuclk                        u:object_r:sysfs_thermal:s0

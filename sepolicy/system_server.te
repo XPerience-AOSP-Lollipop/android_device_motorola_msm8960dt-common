@@ -1,0 +1,2 @@
+allow system_server sysfs_thermal:file r_file_perms;
+allow system_server gpu_device:chr_file { open read write };
