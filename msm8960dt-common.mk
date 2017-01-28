@@ -182,6 +182,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += telephony-ext
 PRODUCT_BOOT_JARS += telephony-ext
 
+# For userdebug builds
+ADDITIONAL_DEFAULT_PROPERTIES += \
+ ro.secure=0 \
+ ro.adb.secure=0 \
+ ro.debuggable=1 \
+ persist.service.adb.enable=1 \
+ security.perf_harden=0
+
 # Wifi
 PRODUCT_PACKAGES += \
     hostapd \
