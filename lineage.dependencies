@@ -15,8 +15,16 @@
     "repository": "android_kernel_motorola_ghost",
     "target_path": "kernel/motorola/ghost"
   },
-  {
-   "repository": "proprietary_vendor_motorola",
-    "target_path": "vendor/motorola"
+    {
+    "remote": "Unicorn",
+    "repository": "proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "branch":      "xpe-11.1"
+  },
+    {
+    "remote": "Muppet",
+    "repository": "proprietary_vendor_qcom_binaries",
+    "target_path": "vendor/qcom/binaries",
+    "branch":      "cm-14.1"
   }
 ]
