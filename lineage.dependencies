@@ -1,15 +1,21 @@
 [
   {
+    "remote": "cm",
     "repository": "android_external_stlport",
-    "target_path": "external/stlport"
+    "target_path": "external/stlport",
+    "branch":      "cm-14.1"
   },
   {
+    "remote": "cm",
     "repository": "android_external_sony_boringssl-compat",
-    "target_path": "external/sony/boringssl-compat"
+    "target_path": "external/sony/boringssl-compat",
+    "branch":      "cm-14.1"
   },
   {
+    "remote": "cm",
     "repository": "android_device_qcom_common",
-    "target_path": "device/qcom/common"
+    "target_path": "device/qcom/common",
+    "branch":      "cm-14.1"
   },
   {
     "repository": "android_kernel_motorola_ghost",
