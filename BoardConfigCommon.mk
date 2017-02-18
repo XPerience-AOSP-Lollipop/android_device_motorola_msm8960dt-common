@@ -66,6 +66,9 @@ BOARD_HAVE_BLUETOOTH        := true
 BOARD_HAVE_BLUETOOTH_QCOM   := true
 BLUETOOTH_HCI_USE_MCT       := true
 
+#block based ota's
+BLOCK_BASED_OTA := true
+
 #Charger
 BACKLIGHT_PATH                      :=/sys/class/backlight/lcd-backlight/brightness
 BOARD_CHARGER_ENABLE_SUSPEND        := true
