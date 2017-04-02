@@ -2,4 +2,4 @@
 allow mediaserver system_file:file execmod;
 allow mediaserver media_rw_data_file:file write;
 allow mediaserver audio_device:chr_file { read write open };
-
+allow mediaserver audio_device:chr_file ioctl;
