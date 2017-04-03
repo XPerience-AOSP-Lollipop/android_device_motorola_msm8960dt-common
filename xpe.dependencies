@@ -12,10 +12,8 @@
     "branch":      "cm-14.1"
   },
   {
-    "remote": "cm",
     "repository": "android_device_qcom_common",
-    "target_path": "device/qcom/common",
-    "branch":      "cm-14.1"
+    "target_path": "device/qcom/common"
   },
   {
     "repository": "android_kernel_motorola_ghost",
