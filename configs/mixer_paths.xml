@@ -456,6 +456,12 @@
         <ctl name="AIC DAC Playback SwitchR" value="1" />
         <ctl name="AIC DAC Playback SwitchL" value="1" />
     </path>
+    
+    <path name="voice-speaker-mic2" >
+        <ctl name="VOC_EXT_EC MUX" value="1" />
+        <ctl name="MI2S_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="1" />
+    </path>
 
     <!-- Voice Speaker -->
     <path name="voice-speaker">
@@ -587,6 +593,10 @@
         <path name="speaker-mic" />
     </path>
 
+    <path name="voice-speaker-dmic">
+        <path name="speaker-voice-mic2" />
+    </path>
+
     <path name="voice-handset-mic">
         <path name="handset-mic" />
     </path>
@@ -605,7 +615,7 @@
     </path>
 
     <path name="voip-sub-mic-comm">
-        <path name="speaker-mic" />
+        <path name="voice-speaker-mic2" />
     </path>
 
     <path name="voip-headset-mic-comm">
