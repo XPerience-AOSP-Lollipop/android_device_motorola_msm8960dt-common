@@ -126,6 +126,7 @@ WPA_SUPPLICANT_VERSION              := VER_0_8_X
 # Recovery: TWRP support
 ifeq ($(WITH_TWRP),true)
 -include $(PLATFORM_PATH)/twrp.mk
+WITH_CM_CHARGER := false
 endif
 BOARD_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 HAVE_SELINUX 						:= true
@@ -139,6 +140,8 @@ RECOVERY_GRAPHICS_USE_LINELENGTH    := true
 BOARD_SUPPRESS_SECURE_ERASE         := true
 TW_INCLUDE_CRYPTO 			    	:= true
 TW_INCLUDE_L_CRYPTO 			    := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE      := true
+TARGET_CRYPTFS_HW_PATH              := vendor/qcom/opensource/cryptfs_hw
 TW_CRYPTO_REAL_BLKDEV 				:= "/dev/block/platform/msm_sdcc.1/by-name/userdata"
 TW_FLASH_FROM_STORAGE 				:= true
 TARGET_HW_DISK_ENCRYPTION 		    := true
