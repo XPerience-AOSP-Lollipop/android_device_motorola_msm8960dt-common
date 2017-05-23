@@ -3,6 +3,8 @@
     <!-- These are the initial mixer settings -->
     <!-- NOTE: For all the mixer controls added under usecases or sound devices -->
     <!--       we should have an initial mixer setting (default value) -->
+    <ctl name="AIC DAC Playback SwitchL" value="0" />
+    <ctl name="AIC DAC Playback SwitchR" value="0" />
     <ctl name="ADC1 Volume" value="0" />
     <ctl name="ADC2 Volume" value="0" />
     <ctl name="ADC3 Volume" value="0" />
@@ -48,8 +50,11 @@
     <ctl name="HDMI Mixer MultiMedia5" value="0" />
     <ctl name="HDMI_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="HPHL DAC Switch" value="0" />
+    <ctl name="HPL AIC Output Mixer L_DAC Switch" value="0" />
     <ctl name="HPHL Volume" value="0" />
     <ctl name="HPHR Volume" value="0" />
+    <ctl name="HPHR DAC Switch" value="0" />
+    <ctl name="HPR AIC Output Mixer R_DAC Switch" value="0" />
     <ctl name="Internal FM RX Volume" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia3" value="0" />
@@ -67,6 +72,7 @@
     <ctl name="MICBIAS2 CAPLESS Switch" value="0" />
     <ctl name="MICBIAS3 CAPLESS Switch" value="0" />
     <ctl name="MICBIAS4 CAPLESS Switch" value="0" />
+    <ctl name="MI2S_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="MultiMedia1 Mixer AFE_PCM_TX" value="0" />
     <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="0" />
     <ctl name="MultiMedia1 Mixer INTERNAL_FM_TX" value="0" />
@@ -92,6 +98,8 @@
     <ctl name="RX6 DSM MUX" value="CIC_OUT" />
     <ctl name="RX7 Digital Volume" value="0" />
     <ctl name="RX7 MIX1 INP1" value="ZERO" />
+    <ctl name="SLIM RX1 MUX" value="ZERO" />
+    <ctl name="SLIM RX2 MUX" value="ZERO" />
     <ctl name="SLIM TX7 MUX" value="ZERO" />
     <ctl name="SLIM TX8 MUX" value="ZERO" />
     <ctl name="SLIM_0_RX Channels" value="One" />
@@ -106,6 +114,9 @@
     <ctl name="SLIMBUS_0_RX Port Mixer INTERNAL_FM_TX" value="0" />
     <ctl name="SLIMBUS_DL_HL Switch" value="0" />
     <ctl name="TTY Mode" value="OFF" />
+	<ctl name="TX3 HPF cut off" value="MIN_3DB_4Hz" />
+	<ctl name="TX4 HPF cut off" value="MIN_3DB_4Hz" />
+    <ctl name="VOC_EXT_EC MUX" value="0" />
     <ctl name="Voice_Tx Mixer AFE_PCM_TX_Voice" value="0" />
     <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="0" />
     <ctl name="Voice_Tx Mixer SLIM_0_TX_Voice" value="0" />
@@ -244,7 +255,7 @@
     <path name="voice-call">
         <ctl name="MI2S_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="SLIM_0_RX_Voice Mixer CSVoice" value="1" />
-        <ctl name="OC_EXT_EC MUX" value="1" />
+        <ctl name="VOC_EXT_EC MUX" value="1" />
     </path>
 
     <path name="voice-call-dmic-endfire">
@@ -643,15 +654,17 @@
         <ctl name="SLIM_0_TX Channels" value="Two" />
         <ctl name="SLIM TX7 MUX" value="DEC4" />
         <ctl name="DEC4 MUX" value="ADC3" />
-        <ctl name="DEC4 Volume" value="84" />
-        <ctl name="ADC3 Volume" value="3" />
+        <ctl name="DEC4 Volume" value="70" />
+        <ctl name="ADC3 Volume" value="100" />
         <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
         <ctl name="SLIM TX8 MUX" value="DEC3" />
         <ctl name="DEC3 MUX" value="ADC4" />
         <ctl name="DEC3 Volume" value="100" />
         <ctl name="ADC4 Volume" value="70" />
-        <ctl name="MICBIAS1 CAPLESS Switch" value="1" />
-        <ctl name="MICBIAS3 CAPLESS Switch" value="1" />
+        <ctl name="TX3 HPF cut off" value="MIN_3DB_75Hz" />
+        <ctl name="TX4 HPF cut off" value="MIN_3DB_75Hz" />
+        <ctl name="MICBIAS1 CAPLESS Switch" value="0" />
+        <ctl name="MICBIAS3 CAPLESS Switch" value="0" />
         <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
         <ctl name="AIF1_CAP Mixer SLIM TX8" value="1" />
     </path>
@@ -676,7 +689,14 @@
    </path>
 
     <path name="speaker-dmic-endfire">
-        <path name="dmic-endfire" />
+        <ctl name="AIF1_CAP Mixer SLIM TX7" value="1" />
+		<ctl name="SLIM_0_TX Channels" value="One" />
+		<ctl name="SLIM TX7 MUX" value="DEC4" />
+		<ctl name="DEC4 MUX" value="ADC3" />
+		<ctl name="TX4 HPF cut off" value="MIN_3DB_75Hz" />
+		<ctl name="DEC4 Volume" value="68" />
+		<ctl name="ADC3 Volume" value="100" />
+		<ctl name="MICBIAS1 CAPLESS Switch" value="0" />
     </path>
 
     <path name="voice-dmic-ef">
