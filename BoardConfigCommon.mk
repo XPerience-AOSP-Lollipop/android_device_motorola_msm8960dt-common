@@ -63,10 +63,9 @@ BOARD_HAVE_BLUETOOTH_QCOM   := true
 BLUETOOTH_HCI_USE_MCT       := true
 
 #Charger
-BACKLIGHT_PATH                      :=/sys/class/leds/lcd-backlight/brightness
+BACKLIGHT_PATH                      :=/sys/class/backlight/lcd-backlight/brightness
 BOARD_CHARGER_ENABLE_SUSPEND        := true
 BOARD_NO_CHARGER_LED                := true
-BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA  			:= true
