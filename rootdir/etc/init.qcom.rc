@@ -617,4 +617,4 @@ service charge_only_mode /system/bin/charge_only_mode
     user root
     group graphics system input
     disabled
-    seclabel u:r:healthd:s0
+    seclabel u:r:charger:s0
