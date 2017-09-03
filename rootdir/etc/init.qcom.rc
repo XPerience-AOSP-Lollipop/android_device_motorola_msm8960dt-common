@@ -154,29 +154,29 @@ on post-fs-data
     chmod 0770 /data/emt
 
     # Permissions for battery health daemon
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_real_fcc_batt_temp
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_real_fcc_mah
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_soc
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_ocv_uv
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_rbatt
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_charge_increase
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_chargecycles
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/bms_aged_capacity
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/bms_aged_capacity_temp
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/bms_chrg_capacity
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/bms_chrg_capacity_temp
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/chrg_timestamp
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/timestamp
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/pcb_temp
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_real_fcc_batt_temp
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_real_fcc_mah
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_soc
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_ocv_uv
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_rbatt
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_charge_increase
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_chargecycles
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/bms_aged_capacity
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/bms_aged_capacity_temp
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/bms_chrg_capacity
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/bms_chrg_capacity_temp
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/chrg_timestamp
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/timestamp
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/pcb_temp
 
     # Permissions for Factory Test of Charging Paths
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_auto_enable
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_ibatt
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_itrick
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_iusb
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_usb_suspend
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_fail_clear
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_vinmin
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_auto_enable
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_ibatt
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_itrick
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_iusb
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_usb_suspend
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_fail_clear
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_vinmin
 
     # Moved from Motorola boot
 
@@ -187,14 +187,14 @@ on post-fs-data
     mkdir /data/local/moodle 0770 graphics system
 
     # create the necessary data dirs for tpapi with proper permission
-    mkdir /dev/tpapi 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi/etc 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi/etc/tpa 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi/etc/tpa/persistent 02770 mot_tpapi mot_tpapi
+    mkdir /dev/tpapi 02770 oem_5007 oem_5007
+    mkdir /data/tpapi 02770 oem_5007 oem_5007
+    mkdir /data/tpapi/etc 02770 oem_5007 oem_5007
+    mkdir /data/tpapi/etc/tpa 02770 oem_5007 oem_5007
+    mkdir /data/tpapi/etc/tpa/persistent 02770 oem_5007 oem_5007
 
     # Create directory used by power_supply logger
-    mkdir /data/power_supply_logger 0750 mot_pwric log
+    mkdir /data/power_supply_logger 0750 oem_5001 log
 
     # Setup folders for diag_mdlog
     mkdir /data/diag_mdlog 0750 system log
@@ -400,7 +400,7 @@ on boot
     mkdir /data/adspd/1 0770 audio audio
 
     # MSP430 driver parameter permissions
-    chown mot_tcmd mot_tcmd /sys/module/msp430/parameters/irq_disable
+    chown oem_5004 oem_5004 /sys/module/msp430/parameters/irq_disable
     chmod 0660 /sys/module/msp430/parameters/irq_disable
 
     # Wifi firmware reload path
@@ -416,14 +416,14 @@ service adspd /system/bin/adspd /dev/ttyHS3
 
 service atvc_core /system/bin/dbvc_atvc_property_set
     class core
-    user mot_atvc
-    group mot_tpapi
+    user oem_5012
+    group oem_5007
     oneshot
 
 service atvc /system/bin/dbvc_atvc_property_set
     class late_start
-    user mot_atvc
-    group mot_tpapi
+    user oem_5012
+    group oem_5007
     oneshot
 
 # BAM Adaptive Timer
@@ -435,8 +435,8 @@ on property:net.tethering.on=1
 
 service batt_health /system/bin/batt_health
     class main
-    user mot_pwric
-    group mot_pwric
+    user oem_5001
+    group oem_5001
 
 service bootmodem /system/bin/bootmodem
     user shell
@@ -576,30 +576,30 @@ on charger
 
 on start-charging
     # Permissions for battery health daemon
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_real_fcc_batt_temp
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_real_fcc_mah
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_soc
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_ocv_uv
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_rbatt
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_charge_increase
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/last_chargecycles
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/bms_aged_capacity
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/bms_aged_capacity_temp
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/bms_chrg_capacity
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/bms_chrg_capacity_temp
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/chrg_timestamp
-    chown mot_pwric mot_pwric /sys/module/pm8921_bms/parameters/timestamp
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/pcb_temp
-    chown root mot_pwric /sys/class/power_supply/battery/capacity
-    chown root mot_pwric /sys/class/power_supply/battery/status
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_real_fcc_batt_temp
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_real_fcc_mah
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_soc
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_ocv_uv
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_rbatt
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_charge_increase
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/last_chargecycles
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/bms_aged_capacity
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/bms_aged_capacity_temp
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/bms_chrg_capacity
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/bms_chrg_capacity_temp
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/chrg_timestamp
+    chown oem_5001 oem_5001 /sys/module/pm8921_bms/parameters/timestamp
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/pcb_temp
+    chown root oem_5001 /sys/class/power_supply/battery/capacity
+    chown root oem_5001 /sys/class/power_supply/battery/status
 
     # Permissions for Factory Test of Charging Paths
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_auto_enable
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_ibatt
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_itrick
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_iusb
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_usb_suspend
-    chown mot_pwric mot_pwric /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_fail_clear
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_auto_enable
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_ibatt
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_itrick
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_iusb
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_usb_suspend
+    chown oem_5001 oem_5001 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_fail_clear
     start batt_health
     start charge_only_mode
 

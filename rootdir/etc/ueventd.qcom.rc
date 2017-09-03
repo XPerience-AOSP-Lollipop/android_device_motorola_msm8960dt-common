@@ -221,10 +221,10 @@
 /dev/sec                  0660   system     drmrpc
 
 # CID
-/dev/block/mmcblk0p29     0660   root       mot_dbvc
+/dev/block/mmcblk0p29     0660   root       oem_5014
 
 # CLOGO
-/dev/block/mmcblk0p31     0660   root       mot_tcmd
+/dev/block/mmcblk0p31     0660   root       oem_5004
 
 # DHOB
 /dev/block/mmcblk0p22     0660   root       radio
@@ -234,7 +234,7 @@
 /dev/mot_hob_ram          0660   radio      radio
 
 # UTAGS
-/dev/block/mmcblk0p8      0660   mot_tcmd   system
+/dev/block/mmcblk0p8      0660   oem_5004   system
 
 # From moto ueventd.rc
 /dev/assd                 0660   smartcard  smartcard
