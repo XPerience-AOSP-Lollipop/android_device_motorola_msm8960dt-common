@@ -36,11 +36,15 @@ on boot
     write /sys/class/android_usb/android0/f_mass_storage/vendor ${ro.product.manufacturer}
     write /sys/class/android_usb/android0/f_mass_storage/product ${ro.product.model}
     write /sys/class/android_usb/f_mass_storage/lun/nofua 1
-    mkdir /dev/bus 0755 root root
-    mkdir /dev/bus/usb 0755 root root
     setprop usb.mtp.pid ${ro.usb.mtp}
     setprop usb.mtp.cdrom 0
     setprop usb.mtp.config mtp,usbnet
+
+on fs
+    mkdir /dev/usb-ffs 0770 shell shell
+    mkdir /dev/usb-ffs/adb 0770 shell shell
+    mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
+    write /sys/class/android_usb/android0/f_ffs/aliases adb
 
 # Following are the parameters required for usb functionality. They provide configurable options like
 # product_id/vendor id and allows specifying required functions:

@@ -133,7 +133,7 @@ vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 
 
-# Graphics & Graphics firmware
+# Graphics & Graphics firmware LA.BF.1.1.3
 etc/firmware/a300_pfp.fw
 etc/firmware/a300_pm4.fw
 vendor/lib/egl/eglsubAndroid.so
@@ -142,17 +142,20 @@ vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/libadreno_utils.so
-vendor/lib/libc2d30-a3xx.so
+vendor/lib/libbccQTI.so
 vendor/lib/libC2D2.so
+vendor/lib/libc2d30-a3xx.so
 vendor/lib/libCB.so
+vendor/lib/libgeofence.so
 vendor/lib/libgsl.so
+vendor/lib/libizat_core.so
 vendor/lib/libllvm-qcom.so
-vendor/lib/libRSDriver_adreno.so
+vendor/lib/libloc_api_v02.so
+vendor/lib/libloc_ds_api.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
-vendor/lib/libOpenCL.so
+vendor/lib/libRSDriver_adreno.so
 vendor/lib/libsc-a3xx.so
-vendor/lib/libbccQTI.so
 
 # IMS - currently unused but have dependencies to qmi
 bin/imsdatadaemon
@@ -249,4 +252,4 @@ lib/libTimeService.so
 vendor/lib/libuiblur.so
 
 # WideVine - from angler
-vendor/lib/mediadrm/libwvdrmengine.so|66ba66d047044f92eb0eada1faf6a5799ded90ab
+vendor/lib/mediadrm/libwvdrmengine.so
