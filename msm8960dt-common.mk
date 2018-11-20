@@ -109,7 +109,8 @@ PRODUCT_PACKAGES += \
     libshim_ril \
     libshim_sensorlistener.so \
     libshims_thermal \
-    libshims_graphicbuffer
+    libshims_graphicbuffer \
+    libcameraserver_shim
 
 # Display
 PRODUCT_PACKAGES += \

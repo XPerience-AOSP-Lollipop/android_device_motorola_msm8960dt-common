@@ -148,3 +148,11 @@ LOCAL_SHARED_LIBRARIES := \
     libgui
 
 include $(BUILD_SHARED_LIBRARY)
+
+
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := camera_server.cpp
+LOCAL_MODULE := libcameraserver_shim
+LOCAL_MODULE_TAGS := optional
+include $(BUILD_SHARED_LIBRARY)
