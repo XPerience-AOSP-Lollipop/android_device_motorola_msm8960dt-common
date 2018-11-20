@@ -22,6 +22,7 @@
         <device name="SND_DEVICE_OUT_BT_SCO_WB" acdb_id="39" />
         <device name="SND_DEVICE_OUT_HEADPHONES" acdb_id="10" />
         <device name="SND_DEVICE_OUT_HANDSET" acdb_id="7" />
+        <device name="SND_DEVICE_OUT_HEADSET" acdb_id="8" />
         <device name="SND_DEVICE_OUT_LINE" acdb_id="10" />
         <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="15" />
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HDMI" acdb_id="22"/>
@@ -37,7 +38,7 @@
         <!-- Input devices -->
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="113" />
         <device name="SND_DEVICE_IN_DMIC" acdb_id="106" />
-		<device name="SND_DEVICE_IN_SPEAKER_MIC" acdb_id="106"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC" acdb_id="106"/>
     </acdb_ids>
 
     <pcm_ids>
@@ -51,6 +52,10 @@
 
     <backend_names>
 		<device name="SND_DEVICE_OUT_HEADPHONES" backend="headphones" />
-     </backend_names>
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-and-headphones" />
+        <device name="SND_DEVICE_OUT_SPEAKER_AND_LINE" backend="speaker-and-headphones" />
+        <device name="SND_DEVICE_OUT_SPEAKER_SAFE_AND_HEADPHONES" backend="speaker-and-headphones" />
+        <device name="SND_DEVICE_OUT_SPEAKER_SAFE_AND_LINE" backend="speaker-and-headphones" />
+    </backend_names>
 
 </audio_platform_info>
