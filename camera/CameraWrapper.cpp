@@ -25,6 +25,7 @@
 
 #define LOG_TAG "CameraWrapper"
 #include <cutils/log.h>
+#include <cutils/properties.h>
 
 #include <utils/threads.h>
 #include <utils/String8.h>
@@ -33,10 +34,19 @@
 #include <camera/Camera.h>
 #include <camera/CameraParameters.h>
 
-static android::Mutex gCameraWrapperLock;
+#define BACK_CAMERA     0
+#define FRONT_CAMERA    1
+
+#define OPEN_RETRIES    10
+#define OPEN_RETRY_MSEC 40
+
+using namespace android;
+
+static Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
 static char **fixed_set_params = NULL;
+static camera_notify_callback gUserNotifyCb = NULL;
 
 static int camera_device_open(const hw_module_t *module, const char *name,
         hw_device_t **device);
@@ -71,6 +81,7 @@ camera_module_t HAL_MODULE_INFO_SYM = {
 
 typedef struct wrapper_camera_device {
     camera_device_t base;
+    int camera_released;
     int id;
     camera_device_t *vendor;
 } wrapper_camera_device_t;
@@ -100,8 +111,8 @@ static int check_vendor_module()
 static char *camera_fixup_getparams(int id __attribute__((unused)),
         const char *settings)
 {
-    android::CameraParameters params;
-    params.unflatten(android::String8(settings));
+    CameraParameters params;
+    params.unflatten(String8(settings));
 
 #if !LOG_NDEBUG
     ALOGV("%s: original parameters:", __FUNCTION__);
@@ -113,7 +124,7 @@ static char *camera_fixup_getparams(int id __attribute__((unused)),
     params.dump();
 #endif
 
-    android::String8 strParams = params.flatten();
+    String8 strParams = params.flatten();
     char *ret = strdup(strParams.string());
 
     return ret;
@@ -121,22 +132,22 @@ static char *camera_fixup_getparams(int id __attribute__((unused)),
 
 static char *camera_fixup_setparams(int id, const char *settings)
 {
-    android::CameraParameters params;
-    params.unflatten(android::String8(settings));
+    CameraParameters params;
+    params.unflatten(String8(settings));
 
 #if !LOG_NDEBUG
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
 #endif
 
-    params.set(android::CameraParameters::KEY_VIDEO_STABILIZATION, "false");
+    params.set(CameraParameters::KEY_VIDEO_STABILIZATION, "false");
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
     params.dump();
 #endif
 
-    android::String8 strParams = params.flatten();
+    String8 strParams = params.flatten();
     if (fixed_set_params[id])
         free(fixed_set_params[id]);
     fixed_set_params[id] = strdup(strParams.string());
@@ -405,13 +416,19 @@ static int camera_send_command(struct camera_device *device,
 
 static void camera_release(struct camera_device *device)
 {
-    ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device,
-            (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
+    wrapper_camera_device_t* wrapper_dev = NULL;
 
     if (!device)
         return;
 
+    ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device,
+            (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
+
+    wrapper_dev = (wrapper_camera_device_t*) device;
+
     VENDOR_CALL(device, release);
+
+    wrapper_dev->camera_released = true;
 }
 
 static int camera_dump(struct camera_device *device, int fd)
@@ -434,7 +451,7 @@ static int camera_device_close(hw_device_t *device)
 
     ALOGV("%s", __FUNCTION__);
 
-    android::Mutex::Autolock lock(gCameraWrapperLock);
+    Mutex::Autolock lock(gCameraWrapperLock);
 
     if (!device) {
         ret = -EINVAL;
@@ -447,6 +464,15 @@ static int camera_device_close(hw_device_t *device)
     }
 
     wrapper_dev = (wrapper_camera_device_t*) device;
+
+    if (!wrapper_dev->camera_released) {
+        ALOGI("%s: releasing camera device with id %d", __FUNCTION__,
+                wrapper_dev->id);
+
+        VENDOR_CALL(wrapper_dev, release);
+
+        wrapper_dev->camera_released = true;
+    }
 
     wrapper_dev->vendor->common.close((hw_device_t*)wrapper_dev->vendor);
     if (wrapper_dev->base.ops)
@@ -478,7 +504,7 @@ static int camera_device_open(const hw_module_t *module, const char *name,
     wrapper_camera_device_t *camera_device = NULL;
     camera_device_ops_t *camera_ops = NULL;
 
-    android::Mutex::Autolock lock(gCameraWrapperLock);
+    Mutex::Autolock lock(gCameraWrapperLock);
 
     ALOGV("%s", __FUNCTION__);
 
@@ -512,11 +538,19 @@ static int camera_device_open(const hw_module_t *module, const char *name,
             goto fail;
         }
         memset(camera_device, 0, sizeof(*camera_device));
+        camera_device->camera_released = false;
         camera_device->id = cameraid;
 
+        int retries = OPEN_RETRIES;
+        bool retry;
+        do {
         rv = gVendorModule->common.methods->open(
                 (const hw_module_t*)gVendorModule, name,
                 (hw_device_t**)&(camera_device->vendor));
+            retry = --retries > 0 && rv;
+            if (retry)
+                usleep(OPEN_RETRY_MSEC * 1000);
+        } while (retry);
         if (rv) {
             ALOGE("vendor camera open fail");
             goto fail;
