@@ -46,28 +46,38 @@ static Mutex gCameraWrapperLock;
 static camera_module_t *gVendorModule = 0;
 
 static char **fixed_set_params = NULL;
-static camera_notify_callback gUserNotifyCb = NULL;
 
 static int camera_device_open(const hw_module_t *module, const char *name,
         hw_device_t **device);
 static int camera_get_number_of_cameras(void);
 static int camera_get_camera_info(int camera_id, struct camera_info *info);
 
+static char videoHfr[4] = "off";
+const char KEY_QC_SUPPORTED_DENOISE[] = "denoise-values";
+const char KEY_QC_SUPPORTED_FACE_DETECTION[] = "face-detection-values";
+const char KEY_QC_SUPPORTED_HFR_SIZES[] = "hfr-size-values";
+const char KEY_QC_SUPPORTED_REDEYE_REDUCTION[] = "redeye-reduction-values";
+const char KEY_QC_SUPPORTED_TOUCH_AF_AEC[] = "touch-af-aec-values";
+const char KEY_QC_SUPPORTED_VIDEO_HIGH_FRAME_RATE_MODES[] = "video-hfr-values";
+const char KEY_QC_SUPPORTED_ZSL_MODES[] = "zsl-values";
+const char KEY_QC_VIDEO_HIGH_FRAME_RATE[] = "video-hfr";
+const char KEY_QC_ZSL[] = "zsl";
+
 static struct hw_module_methods_t camera_module_methods = {
-    .open = camera_device_open,
+    .open = camera_device_open
 };
 
 camera_module_t HAL_MODULE_INFO_SYM = {
     .common = {
-         .tag = HARDWARE_MODULE_TAG,
-         .module_api_version = CAMERA_MODULE_API_VERSION_1_0,
-         .hal_api_version = HARDWARE_HAL_API_VERSION,
-         .id = CAMERA_HARDWARE_MODULE_ID,
-         .name = "Moto X Camera Wrapper",
-         .author = "The CyanogenMod Project",
-         .methods = &camera_module_methods,
-         .dso = NULL, /* remove compilation warnings */
-         .reserved = {0}, /* remove compilation warnings */
+        .tag = HARDWARE_MODULE_TAG,
+        .version_major = 1,
+        .version_minor = 0,
+        .id = CAMERA_HARDWARE_MODULE_ID,
+        .name = "Moto X Camera Wrapper",
+        .author = "The XPerience Project",
+        .methods = &camera_module_methods,
+        .dso = NULL, /* remove compilation warnings */
+        .reserved = {0}, /* remove compilation warnings */
     },
     .get_number_of_cameras = camera_get_number_of_cameras,
     .get_camera_info = camera_get_camera_info,
@@ -119,6 +129,28 @@ static char *camera_fixup_getparams(int id __attribute__((unused)),
     params.dump();
 #endif
 
+    if (id == BACK_CAMERA) {
+        params.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "auto,on,off,torch");
+        params.set(KEY_QC_SUPPORTED_TOUCH_AF_AEC, "touch-on,touch-off");
+        params.set(CameraParameters::KEY_SUPPORTED_SCENE_MODES,
+                "auto,action,portrait,landscape,night,night-portrait,theatre"
+                "candlelight,beach,snow,sunset,steadyphoto,fireworks,sports,party,"
+                "auto_hdr,hdr,asd,backlight,flowers,AR");
+    }
+
+    params.set(KEY_QC_SUPPORTED_DENOISE, "denoise-on,denoise-off");
+    params.set(KEY_QC_SUPPORTED_FACE_DETECTION, "on,off");
+    params.set(KEY_QC_SUPPORTED_REDEYE_REDUCTION, "enable,disable");
+    params.set(KEY_QC_SUPPORTED_HFR_SIZES, "1296x728,1296x728,720x480");
+    params.set(KEY_QC_SUPPORTED_VIDEO_HIGH_FRAME_RATE_MODES, "60,90,120,off");
+    params.set(KEY_QC_SUPPORTED_ZSL_MODES, "on,off");
+
+    /* HFR video recording workaround */
+    const char *recordingHint = params.get(CameraParameters::KEY_RECORDING_HINT);
+    if (recordingHint && !strcmp(recordingHint, "true")) {
+        params.set(KEY_QC_VIDEO_HIGH_FRAME_RATE, videoHfr);
+    }
+
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
     params.dump();
@@ -140,7 +172,20 @@ static char *camera_fixup_setparams(int id, const char *settings)
     params.dump();
 #endif
 
-    params.set(CameraParameters::KEY_VIDEO_STABILIZATION, "false");
+    /*
+     * The video-hfr parameter gets removed from the parameters list by the
+     * vendor call, unless the Motorola camera app is used. Save the value
+     * so that we can later return it.
+     */
+    const char *hfr = params.get(KEY_QC_VIDEO_HIGH_FRAME_RATE);
+    snprintf(videoHfr, sizeof(videoHfr), "%s", hfr ? hfr : "off");
+
+    const char *sceneMode = params.get(CameraParameters::KEY_SCENE_MODE);
+     if (sceneMode != NULL) {
+        if (!strcmp(sceneMode, CameraParameters::SCENE_MODE_HDR)) {
+            params.remove(KEY_QC_ZSL);
+        }
+     }
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
@@ -568,7 +613,7 @@ static int camera_device_open(const hw_module_t *module, const char *name,
         memset(camera_ops, 0, sizeof(*camera_ops));
 
         camera_device->base.common.tag = HARDWARE_DEVICE_TAG;
-        camera_device->base.common.version = CAMERA_DEVICE_API_VERSION_1_0;
+        camera_device->base.common.version = CAMERA_MODULE_API_VERSION_1_0;
         camera_device->base.common.module = (hw_module_t *)(module);
         camera_device->base.common.close = camera_device_close;
         camera_device->base.ops = camera_ops;
