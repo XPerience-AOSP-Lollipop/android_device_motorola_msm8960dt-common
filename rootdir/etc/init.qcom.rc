@@ -46,7 +46,7 @@ on early-init
     mkdir /persist 0771 system system
 
     # Symbols required for Motorola blobs
-    export LD_SHIM_LIBS "/system/vendor/lib/libgsl.so|libboringssl-compat.so:/system/lib/libmot_sensorlistener.so|libshim_sensorlistener.so:/system/lib/liblog.so|libshim_log.so:/system/lib/libmdmcutback.so|libshim_mdmcutback.so:/system/lib/libqc-opt.so|libshim_qcopt.so:/system/lib/libril.so|libshim_ril.so:/system/bin/rild|libshim_ril.so:/system/bin/thermald|libshims_thermal.so:/system/bin/thermald|libshim_log.so:/system/bin/time_daemon|libshim_log.so:/system/bin/cameraserver|libshims_cameraservice.so:/system/bin/mediaserver|libshims_cameraservice.so:/system/bin/mm-qcamera-daemon|libshim_bionic.so:system/lib/libmmcamera_frameproc.so|libshims_graphicbuffer:system/lib/libcameraservice.so|libcameraserver_shim:system/lib/libmmcamera_frameproc.so|libframeproc_shim"
+    export LD_SHIM_LIBS "/system/vendor/lib/libgsl.so|libboringssl-compat.so:/system/lib/libmot_sensorlistener.so|libshim_sensorlistener.so:/system/lib/liblog.so|libshim_log.so:/system/lib/libmdmcutback.so|libshim_mdmcutback.so:/system/lib/libqc-opt.so|libshim_qcopt.so:/system/lib/libril.so|libshim_ril.so:/system/bin/rild|libshim_ril.so:/system/bin/thermald|libshims_thermal.so:/system/bin/thermald|libshim_log.so:/system/bin/time_daemon|libshim_log.so:system/lib/libmmcamera_frameproc.so|libshims_graphicbuffer:system/lib/libmmcamera_frameproc.so|libframeproc_shim"
 
     symlink /data/tombstones /tombstones
 
@@ -500,7 +500,7 @@ service netmgrd /system/bin/netmgrd
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
-    group camera system inet input graphics net_bt_stack audio drmrpc mediadrm net_bw_acct
+    group camera system inet input graphics
 
 service qmuxd /system/bin/qmuxd
     class main

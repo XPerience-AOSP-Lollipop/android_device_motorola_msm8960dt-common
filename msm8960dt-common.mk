@@ -100,17 +100,14 @@ PRODUCT_PACKAGES += \
 
 # Camerashims and others shims
 PRODUCT_PACKAGES += \
-    libshim_bionic \
-    libshim_camera \
-    libshims_cameraservice \
     libshim_log \
     libshim_mdmcutback \
     libshim_qcopt \
     libshim_ril \
-    libshim_sensorlistener.so \
-    libshims_thermal \
+    libshims_thermal \	
     libshims_graphicbuffer \
-    libcameraserver_shim
+    libshim_sensorlistener.so \
+    libframeproc_shim
 
 # Display
 PRODUCT_PACKAGES += \
