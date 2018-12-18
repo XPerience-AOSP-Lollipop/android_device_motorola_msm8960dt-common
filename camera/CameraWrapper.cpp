@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014, The CyanogenMod Project
+ * Copyright (C) 2018, The XPerience Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -52,46 +53,34 @@ static int camera_device_open(const hw_module_t *module, const char *name,
 static int camera_get_number_of_cameras(void);
 static int camera_get_camera_info(int camera_id, struct camera_info *info);
 
-static char videoHfr[4] = "off";
-const char KEY_QC_SUPPORTED_DENOISE[] = "denoise-values";
-const char KEY_QC_SUPPORTED_FACE_DETECTION[] = "face-detection-values";
-const char KEY_QC_SUPPORTED_HFR_SIZES[] = "hfr-size-values";
-const char KEY_QC_SUPPORTED_REDEYE_REDUCTION[] = "redeye-reduction-values";
-const char KEY_QC_SUPPORTED_TOUCH_AF_AEC[] = "touch-af-aec-values";
-const char KEY_QC_SUPPORTED_VIDEO_HIGH_FRAME_RATE_MODES[] = "video-hfr-values";
-const char KEY_QC_SUPPORTED_ZSL_MODES[] = "zsl-values";
-const char KEY_QC_VIDEO_HIGH_FRAME_RATE[] = "video-hfr";
-const char KEY_QC_ZSL[] = "zsl";
-
 static struct hw_module_methods_t camera_module_methods = {
-    .open = camera_device_open
+    .open = camera_device_open,
 };
 
-camera_module_t HAL_MODULE_INFO_SYM = {
-    .common = {
-        .tag = HARDWARE_MODULE_TAG,
-        .version_major = 1,
-        .version_minor = 0,
-        .id = CAMERA_HARDWARE_MODULE_ID,
-        .name = "Moto X Camera Wrapper",
-        .author = "The XPerience Project",
-        .methods = &camera_module_methods,
-        .dso = NULL, /* remove compilation warnings */
-        .reserved = {0}, /* remove compilation warnings */
-    },
-    .get_number_of_cameras = camera_get_number_of_cameras,
-    .get_camera_info = camera_get_camera_info,
-    .set_callbacks = NULL, /* remove compilation warnings */
-    .get_vendor_tag_ops = NULL, /* remove compilation warnings */
-    .open_legacy = NULL, /* remove compilation warnings */
-    .set_torch_mode = NULL, /* remove compilation warnings */
-    .init = NULL, /* remove compilation warnings */
-    .reserved = {0}, /* remove compilation warnings */
-};
+ camera_module_t HAL_MODULE_INFO_SYM = {
+     .common = {
+         .tag = HARDWARE_MODULE_TAG,
+         .version_major = 1,
+         .version_minor = 0,
+         .id = CAMERA_HARDWARE_MODULE_ID,
+         .name = "Moto X Camera Wrapper",
+         .author = "The XPerience Project",
+         .methods = &camera_module_methods,
+         .dso = NULL, /* remove compilation warnings */
+         .reserved = {0}, /* remove compilation warnings */
+     },
+     .get_number_of_cameras = camera_get_number_of_cameras,
+     .get_camera_info = camera_get_camera_info,
+     .set_callbacks = NULL, /* remove compilation warnings */
+     .get_vendor_tag_ops = NULL, /* remove compilation warnings */
+     .open_legacy = NULL, /* remove compilation warnings */
+     .set_torch_mode = NULL, /* remove compilation warnings */
+     .init = NULL, /* remove compilation warnings */
+     .reserved = {0}, /* remove compilation warnings */
+ };
 
 typedef struct wrapper_camera_device {
     camera_device_t base;
-    int camera_released;
     int id;
     camera_device_t *vendor;
 } wrapper_camera_device_t;
@@ -118,8 +107,8 @@ static int check_vendor_module()
     return rv;
 }
 
-static char *camera_fixup_getparams(int id __attribute__((unused)),
-        const char *settings)
+static char *camera_fixup_getparams(int id, const char *settings)
+
 {
     CameraParameters params;
     params.unflatten(String8(settings));
@@ -128,28 +117,6 @@ static char *camera_fixup_getparams(int id __attribute__((unused)),
     ALOGV("%s: original parameters:", __FUNCTION__);
     params.dump();
 #endif
-
-    if (id == BACK_CAMERA) {
-        params.set(CameraParameters::KEY_SUPPORTED_FLASH_MODES, "auto,on,off,torch");
-        params.set(KEY_QC_SUPPORTED_TOUCH_AF_AEC, "touch-on,touch-off");
-        params.set(CameraParameters::KEY_SUPPORTED_SCENE_MODES,
-                "auto,action,portrait,landscape,night,night-portrait,theatre"
-                "candlelight,beach,snow,sunset,steadyphoto,fireworks,sports,party,"
-                "auto_hdr,hdr,asd,backlight,flowers,AR");
-    }
-
-    params.set(KEY_QC_SUPPORTED_DENOISE, "denoise-on,denoise-off");
-    params.set(KEY_QC_SUPPORTED_FACE_DETECTION, "on,off");
-    params.set(KEY_QC_SUPPORTED_REDEYE_REDUCTION, "enable,disable");
-    params.set(KEY_QC_SUPPORTED_HFR_SIZES, "1296x728,1296x728,720x480");
-    params.set(KEY_QC_SUPPORTED_VIDEO_HIGH_FRAME_RATE_MODES, "60,90,120,off");
-    params.set(KEY_QC_SUPPORTED_ZSL_MODES, "on,off");
-
-    /* HFR video recording workaround */
-    const char *recordingHint = params.get(CameraParameters::KEY_RECORDING_HINT);
-    if (recordingHint && !strcmp(recordingHint, "true")) {
-        params.set(KEY_QC_VIDEO_HIGH_FRAME_RATE, videoHfr);
-    }
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
@@ -172,20 +139,7 @@ static char *camera_fixup_setparams(int id, const char *settings)
     params.dump();
 #endif
 
-    /*
-     * The video-hfr parameter gets removed from the parameters list by the
-     * vendor call, unless the Motorola camera app is used. Save the value
-     * so that we can later return it.
-     */
-    const char *hfr = params.get(KEY_QC_VIDEO_HIGH_FRAME_RATE);
-    snprintf(videoHfr, sizeof(videoHfr), "%s", hfr ? hfr : "off");
-
-    const char *sceneMode = params.get(CameraParameters::KEY_SCENE_MODE);
-     if (sceneMode != NULL) {
-        if (!strcmp(sceneMode, CameraParameters::SCENE_MODE_HDR)) {
-            params.remove(KEY_QC_ZSL);
-        }
-     }
+    params.set(CameraParameters::KEY_VIDEO_STABILIZATION, "false");
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
@@ -461,19 +415,15 @@ static int camera_send_command(struct camera_device *device,
 
 static void camera_release(struct camera_device *device)
 {
-    wrapper_camera_device_t* wrapper_dev = NULL;
-
-    if (!device)
-        return;
+    //wrapper_camera_device_t* wrapper_dev = NULL;
 
     ALOGV("%s->%08X->%08X", __FUNCTION__, (uintptr_t)device,
             (uintptr_t)(((wrapper_camera_device_t*)device)->vendor));
 
-    wrapper_dev = (wrapper_camera_device_t*) device;
+    if (!device)
+        return;
 
     VENDOR_CALL(device, release);
-
-    wrapper_dev->camera_released = true;
 }
 
 static int camera_dump(struct camera_device *device, int fd)
@@ -509,15 +459,6 @@ static int camera_device_close(hw_device_t *device)
     }
 
     wrapper_dev = (wrapper_camera_device_t*) device;
-
-    if (!wrapper_dev->camera_released) {
-        ALOGI("%s: releasing camera device with id %d", __FUNCTION__,
-                wrapper_dev->id);
-
-        VENDOR_CALL(wrapper_dev, release);
-
-        wrapper_dev->camera_released = true;
-    }
 
     wrapper_dev->vendor->common.close((hw_device_t*)wrapper_dev->vendor);
     if (wrapper_dev->base.ops)
@@ -583,15 +524,14 @@ static int camera_device_open(const hw_module_t *module, const char *name,
             goto fail;
         }
         memset(camera_device, 0, sizeof(*camera_device));
-        camera_device->camera_released = false;
         camera_device->id = cameraid;
 
         int retries = OPEN_RETRIES;
         bool retry;
         do {
-        rv = gVendorModule->common.methods->open(
-                (const hw_module_t*)gVendorModule, name,
-                (hw_device_t**)&(camera_device->vendor));
+            rv = gVendorModule->common.methods->open(
+                    (const hw_module_t*)gVendorModule, name,
+                    (hw_device_t**)&(camera_device->vendor));
             retry = --retries > 0 && rv;
             if (retry)
                 usleep(OPEN_RETRY_MSEC * 1000);
