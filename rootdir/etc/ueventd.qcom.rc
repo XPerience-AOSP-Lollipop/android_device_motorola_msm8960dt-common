@@ -121,10 +121,10 @@
 /dev/motcamera0           0660   camera     camera
 /dev/gemini/              0660   system     camera
 /dev/mercury0             0660   system     camera
-/dev/msm_vidc_reg         0666   system     audio
-/dev/msm_vidc_dec         0666   system     audio
-/dev/msm_vidc_dec_sec     0666   system     audio
-/dev/msm_vidc_enc         0666   system     audio
+/dev/msm_vidc_reg         0660   system     audio
+/dev/msm_vidc_dec         0660   system     audio
+/dev/msm_vidc_dec_sec     0660   system     audio
+/dev/msm_vidc_enc         0660   system     audio
 /dev/msm_rotator          0660   system     system
 /dev/hw_random            0660   system     system
 /dev/block/mmcblk1p1      0660   system     system
@@ -197,9 +197,10 @@
 /dev/i2c-4                0660   root       camera
 /dev/i2c-10               0660   root       system
 /dev/i2c-12               0660   root       system
-/dev/tzcom                0660   system     drmrpc
-/dev/qce                  0660   system     drmrpc
-/dev/sec                  0660   system     drmrpc
+/dev/tzcom                0660   system     mot_tpapi
+/dev/qseecom              0660   system     mot_tpapi
+/dev/qce                  0660   system     mot_tpapi
+/dev/sec                  0660   system     mot_tpapi
 
 # EMU detection
 /dev/emu_det              0660  mot_accy     mot_whisper
@@ -217,8 +218,13 @@
 /dev/drv2605              0660   system     system
 
 # Security
-/dev/qseecom              0660   system     drmrpc
-/dev/sec                  0660   system     drmrpc
+/dev/qseecom              0660   system     mot_tpapi
+/dev/sec                  0660   system     mot_tpapi
+
+# HOB and DHOB partition permission
+/dev/block/mmcblk0p21     0660   root       radio
+/dev/block/mmcblk0p22     0660   root       radio
+/dev/mot_hob_ram          0660   radio      radio
 
 # CID
 /dev/block/mmcblk0p29     0660   root       mot_dbvc
@@ -226,15 +232,11 @@
 # CLOGO
 /dev/block/mmcblk0p31     0660   root       mot_tcmd
 
-# DHOB
-/dev/block/mmcblk0p22     0660   root       radio
-
-# HOB
-/dev/block/mmcblk0p21     0660   root       radio
-/dev/mot_hob_ram          0660   radio      radio
-
 # UTAGS
 /dev/block/mmcblk0p8      0660   mot_tcmd   system
 
 # From moto ueventd.rc
 /dev/assd                 0660   smartcard  smartcard
+
+#kernel logs
+/dev/log/kernel           0600   root       log
