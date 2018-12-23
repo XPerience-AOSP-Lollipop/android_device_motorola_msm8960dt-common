@@ -46,7 +46,7 @@ BOARD_CUSTOM_BOOTIMG_MK    := $(LOCAL_PATH)/mkbootimg.mk
 BOARD_KERNEL_LZ4C_DT 	   := true
 LZMA_RAMDISK_TARGETS 	   := recovery
 BOARD_KERNEL_CMDLINE       := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2 androidboot.write_protect=0
-#BOARD_KERNEL_CMDLINE       += androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE       += androidboot.selinux=permissive
 BOARD_KERNEL_BASE          := 0x80200000
 BOARD_KERNEL_PAGESIZE      := 2048
 BOARD_KERNEL_SEPARATED_DT  := true
@@ -84,7 +84,7 @@ TARGET_USES_ION                     := true
 USE_OPENGL_RENDERER                 := true
 
 # Flags
-BOARD_USES_LEGACY_MMAP := true
+#BOARD_USES_LEGACY_MMAP := true
 
 # Power HAL
 TARGET_POWERHAL_VARIANT := qcom
@@ -135,19 +135,13 @@ TARGET_RECOVERY_PIXEL_FORMAT        := "RGB_565"
 TW_EXTERNAL_STORAGE_PATH            := "/usb-otg"
 TW_EXTERNAL_STORAGE_MOUNT_POINT     := "usb-otg"
 DEVICE_RESOLUTION                   := 720x1280
-RECOVERY_GRAPHICS_USE_LINELENGTH    := true
 BOARD_SUPPRESS_SECURE_ERASE         := true
 TW_INCLUDE_CRYPTO 			    	:= true
-TW_INCLUDE_L_CRYPTO 			    := true
-TW_CRYPTO_REAL_BLKDEV 				:= "/dev/block/platform/msm_sdcc.1/by-name/userdata"
 TW_FLASH_FROM_STORAGE 				:= true
 TARGET_HW_DISK_ENCRYPTION 		    := true
 TW_TARGET_USES_QCOM_BSP             := true
 TW_DEFAULT_EXTERNAL_STORAGE         := true
-TW_EXCLUDE_SUPERSU                  := true
 TW_INCLUDE_NTFS_3G                  := true
-TW_INTERNAL_STORAGE_MOUNT_POINT     := "data"
-TW_INTERNAL_STORAGE_PATH            := "/data/media"
 TW_NO_SCREEN_BLANK                  := true
 TW_NO_USB_STORAGE                   := true
 TW_INCLUDE_FUSE_EXFAT 				:= true
