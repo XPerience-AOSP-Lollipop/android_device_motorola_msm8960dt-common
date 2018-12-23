@@ -5,5 +5,5 @@ init_daemon_domain(atvc)
 
 allow atvc unlabeled:dir search;
 allow atvc pds_file:dir search;
-allow atvc pds_public_file:dir search;
+
 set_prop(atvc, atvc_prop)

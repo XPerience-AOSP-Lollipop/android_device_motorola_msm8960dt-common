@@ -12,7 +12,4 @@ allow sensord sensors_data_file:fifo_file create_file_perms;
 allow sensord sensors_data_file:file create_file_perms;
 allow sensord system_data_file:dir create_dir_perms;
 
-allow sensord sysfs_devices_sensors:dir search;
-allow sensord sysfs_devices_sensors:file rw_file_perms;
-
 type_transition sensord system_data_file:file sensors_data_file;
