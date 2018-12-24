@@ -48,6 +48,7 @@
     <ctl name="HDMI Mixer MultiMedia5" value="0" />
     <ctl name="HDMI_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="HPHL DAC Switch" value="0" />
+    <ctl name="HPHR DAC Switch" value="0" />
     <ctl name="HPHL Volume" value="0" />
     <ctl name="HPHR Volume" value="0" />
     <ctl name="Internal FM RX Volume" value="0" />
@@ -164,9 +165,11 @@
     <!-- HiFi Lowlatency -->
     <path name="low-latency-playback">
         <ctl name="MI2S_RX Audio Mixer MultiMedia5" value="1" />
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="1" />
     </path>
     <path name="low-latency-playback speaker">
         <ctl name="MI2S_RX Audio Mixer MultiMedia5" value="1" />
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="1" />
     </path>
 
     <path name="low-latency-playback hdmi">
@@ -180,6 +183,7 @@
 	
 	<path name="low-latency-playback headphones">
 		<ctl name="MI2S_RX Audio Mixer MultiMedia5" value="1" />
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="1" />
 		<ctl name="SLIM_0_RX Channels" value="Two" />
 	</path>
 
@@ -414,7 +418,7 @@
     </path>
 
     <!-- Headphones -->
-    <path name="headphones">
+    <!--<path name="headphones">
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX1 MIX1 INP2" value="RX6" />
@@ -423,6 +427,21 @@
         <ctl name="HPHL DAC Switch" value="1" />
         <ctl name="SLIM TX3 MUX" value="RMIX1" />
         <ctl name="SLIM TX5 MUX" value="RMIX2" />
+    </path>-->
+	<path name="headphones">
+        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM_0_RX Channels" value="Two" />
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
+        <ctl name="MI2S_RX Audio Mixer MultiMedia1" value="1" />
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="HPHL DAC Switch" value="1" />
+        <ctl name="HPHR DAC Switch" value="1" />
+        <ctl name="HPHL Volume" value="80" />
+        <ctl name="HPHR Volume" value="80" />
+        <ctl name="RX1 Digital Volume" value="68" />
+        <ctl name="RX2 Digital Volume" value="68" />
     </path>
 
     <!-- Speaker Headset -->

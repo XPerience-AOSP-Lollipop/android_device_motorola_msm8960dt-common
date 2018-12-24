@@ -22,8 +22,8 @@
         <device name="SND_DEVICE_OUT_BT_SCO_WB" acdb_id="39" />
         <device name="SND_DEVICE_OUT_HEADPHONES" acdb_id="10" />
         <device name="SND_DEVICE_OUT_HANDSET" acdb_id="7" />
-        <device name="SND_DEVICE_OUT_HEADSET" acdb_id="8" />
-        <device name="SND_DEVICE_OUT_LINE" acdb_id="10" />
+        <device name="SND_DEVICE_OUT_HEADSET" acdb_id="53" />
+        <device name="SND_DEVICE_OUT_LINE" acdb_id="11" />
         <device name="SND_DEVICE_OUT_SPEAKER" acdb_id="15" />
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HDMI" acdb_id="22"/>
         <device name="SND_DEVICE_OUT_SPEAKER_AND_LINE" acdb_id="77" />
@@ -32,12 +32,19 @@
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADSET" acbd_id="10" />
         <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" acdb_id="10"/>
         <device name="SND_DEVICE_OUT_SPEAKER_SAFE_AND_HEADPHONES" acdb_id="10"/>
-        <device name="SND_DEVICE_OUT_VOICE_LINE" acdb_id="18"/>
+        <device name="SND_DEVICE_OUT_VOICE_LINE" acdb_id="11"/>
         <device name="SND_DEVICE_OUT_VOIP_HEADPHONES" acdb_id="401" />
+        <device name="SND_DEVICE_OUT_VOICE_HEADSET" acdb_id="8" />
+        <device name="SND_DEVICE_OUT_VOIP_SPEAKER" acbd_id="14" />
+        <device name="SND_DEVICE_OUT_USB_PROXY" acbd_id="45" />
 
         <!-- Input devices -->
         <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="113" />
         <device name="SND_DEVICE_IN_DMIC" acdb_id="106" />
+        <device name="SND_DEVICE_IN_DMIC_ENDFIRE" acdb_id="6" />
+		<device name="SND_DEVICE_IN_CAMCORDER" acbd_id="61" />
+        <device name="SND_DEVICE_IN_SECONDARY_MIC" acdb_id="4" />
+        <device name="SND_DEVICE_IN_TERTIARY_MIC" acdb_id="4" />
         <device name="SND_DEVICE_IN_SPEAKER_MIC" acdb_id="106"/>
     </acdb_ids>
 
@@ -51,11 +58,7 @@
     </device_names>
 
     <backend_names>
-		<device name="SND_DEVICE_OUT_HEADPHONES" backend="headphones" />
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" backend="speaker-and-headphones" />
-        <device name="SND_DEVICE_OUT_SPEAKER_AND_LINE" backend="speaker-and-headphones" />
-        <device name="SND_DEVICE_OUT_SPEAKER_SAFE_AND_HEADPHONES" backend="speaker-and-headphones" />
-        <device name="SND_DEVICE_OUT_SPEAKER_SAFE_AND_LINE" backend="speaker-and-headphones" />
+
     </backend_names>
 
 </audio_platform_info>
