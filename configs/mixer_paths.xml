@@ -377,6 +377,25 @@
         <path name="incall-rec-uplink-and-downlink" />
     </path>
 
+     <!-- These are actual sound device specific mixer settings -->
+     <path name="adc2">
+         <ctl name="SLIM_0_TX Channels" value="One" />
+         <ctl name="SLIM TX7 MUX" value="DEC5" />
+         <ctl name="DEC5 MUX" value="ADC2" />
+     </path>
+
+     <path name="adc3">
+         <ctl name="SLIM_0_TX Channels" value="One" />
+         <ctl name="SLIM TX7 MUX" value="DEC4" />
+         <ctl name="DEC4 MUX" value="ADC3" />
+     </path>
+ 
+      <path name="adc4">
+         <ctl name="SLIM_0_TX Channels" value="One" />
+         <ctl name="SLIM TX7 MUX" value="DEC3" />
+         <ctl name="DEC3 MUX" value="ADC4" />
+     </path>
+
     <path name="afe-proxy-playback afe-proxy">
     </path>
 
@@ -429,8 +448,8 @@
         <ctl name="SLIM TX5 MUX" value="RMIX2" />
     </path>-->
 	<path name="headphones">
-        <ctl name="SLIM RX1 MUX" value="AIF1_PB" />
-        <ctl name="SLIM RX2 MUX" value="AIF1_PB" />
+        <ctl name="SLIM RX1 MUX" value="RX1" />
+        <ctl name="SLIM RX2 MUX" value="RX2" />
         <ctl name="SLIM_0_RX Channels" value="Two" />
         <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
         <ctl name="MI2S_RX Audio Mixer MultiMedia1" value="1" />
