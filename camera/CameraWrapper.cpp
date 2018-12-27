@@ -137,7 +137,7 @@ static char *camera_fixup_setparams(int id, const char *settings)
     params.dump();
 #endif
 
-    params.set(CameraParameters::KEY_VIDEO_STABILIZATION, "false");
+    params.set("video-stabilization-supported", "false");
 
 #if !LOG_NDEBUG
     ALOGV("%s: fixed parameters:", __FUNCTION__);
