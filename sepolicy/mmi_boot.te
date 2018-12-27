@@ -17,4 +17,3 @@ allow mmi_boot toolbox_exec:file { execute execute_no_trans getattr open read };
 allow mmi_boot proc:file { open read };
 
 set_prop(mmi_boot, mmi_boot_prop)
-set_prop(mmi_boot, default_prop)
