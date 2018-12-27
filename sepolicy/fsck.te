@@ -1,0 +1,2 @@
+# RW for e2fsk
+allow fsck block_device:blk_file { read open write ioctl };

@@ -10,3 +10,7 @@ allow batt_health self:capability { dac_override net_admin setuid chown fowner f
 allow batt_health self:netlink_kobject_uevent_socket { create bind setopt read };
 allow batt_health sysfs_batt_health:dir search;
 allow batt_health sysfs_batt_health:file rw_file_perms;
+allow batt_health sysfs:file { open read };
+allow batt_health sysfs:dir { open read };
+allow batt_health unlabeled:dir search;
+allow batt_health unlabeled:file { open read };

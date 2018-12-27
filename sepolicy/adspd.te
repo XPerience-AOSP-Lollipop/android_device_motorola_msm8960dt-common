@@ -1,3 +1,4 @@
+#============= adspd ==============
 type adspd, domain;
 type adspd_exec, exec_type, file_type;
 init_daemon_domain(adspd)
@@ -8,6 +9,9 @@ allow adspd adspd_data_file:file create_file_perms;
 allow adspd input_device:dir search;
 allow adspd input_device:chr_file rw_file_perms;
 allow adspd sysfs_adspd:file rw_file_perms;
+
+allow adspd sysfs:dir { open read };
+allow adspd sysfs:file { open read };
 
 set_prop(adspd, adspd_prop)
 set_prop(adspd, ctl_default_prop)

@@ -1,2 +1,4 @@
 allow ueventd persist_wifi_file:file r_file_perms;
 allow ueventd persist_wifi_file:lnk_file r_file_perms;
+allow ueventd unlabeled:dir search;
+allow ueventd unlabeled:file { getattr open read };

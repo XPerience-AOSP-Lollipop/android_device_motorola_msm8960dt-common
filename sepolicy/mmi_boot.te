@@ -10,4 +10,11 @@ allow mmi_boot mmi_boot_exec:file { getattr open execute_no_trans };
 allow mmi_boot self:capability { dac_override sys_module };
 allow mmi_boot utags_block_device:blk_file r_file_perms;
 
+#allow mmi_boot default_prop:property_service set;
+allow mmi_boot shell_exec:file getattr;
+allow mmi_boot system_prop:property_service set;
+allow mmi_boot toolbox_exec:file { execute execute_no_trans getattr open read };
+allow mmi_boot proc:file { open read };
+
 set_prop(mmi_boot, mmi_boot_prop)
+set_prop(mmi_boot, default_prop)
