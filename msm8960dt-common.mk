@@ -107,6 +107,10 @@ PRODUCT_PACKAGES += \
     libgenlock \
     memtrack.msm8960
 
+#DRM
+PRODUCT_PACKAGES += \
+    libprotobuf-cpp-lite
+
 # Doze mode
 PRODUCT_PACKAGES += \
     libjni_motoSensor \
