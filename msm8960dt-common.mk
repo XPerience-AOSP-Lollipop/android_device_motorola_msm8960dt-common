@@ -86,6 +86,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8960 \
+    libbson \
     Snap
 
 # Compat
