@@ -504,7 +504,7 @@ on property:ro.use_data_netmgrd=false
 service netmgrd /system/bin/netmgrd
     class main
     user root
-    group root wifi wakelock radio
+    group radio system wakelock
 
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
@@ -514,7 +514,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
 service qmuxd /system/bin/qmuxd
     class main
     user radio
-    group radio audio bluetooth gps qcom_diag
+    group radio audio bluetooth gps qcom_diag wakelock
 
 service qseecomd /system/bin/qseecomd
     class late_start
@@ -524,7 +524,7 @@ service qseecomd /system/bin/qseecomd
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
-    group system wakelock
+    group wakelock
 
 # SSR
 on property:persist.sys.qc.sub.rdump.on=*
