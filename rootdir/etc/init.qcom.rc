@@ -43,7 +43,7 @@ on early-init
     mkdir /persist 0771 system system
 
     # Symbols required for Motorola blobs
-    export LD_SHIM_LIBS "/system/vendor/lib/libgsl.so|libboringssl-compat.so:/system/lib/libmot_sensorlistener.so|libshim_camera.so:/system/lib/liblog.so|libshim_log.so:/system/lib/libmdmcutback.so|libshim_mdmcutback.so:/system/lib/libqc-opt.so|libshim_qcopt.so:/system/lib/libril.so|libshim_ril.so:/system/bin/rild|rild_socket.so:/system/bin/thermald|libshims_thermal.so"
+    export LD_SHIM_LIBS "/system/vendor/lib/libgsl.so|libboringssl-compat.so:/system/lib/libmot_sensorlistener.so|libshim_camera.so:/system/lib/liblog.so|libshim_log.so:/system/lib/libmdmcutback.so|libshim_mdmcutback.so:/system/lib/libqc-opt.so|libshim_qcopt.so:/system/lib/libril.so|libshim_ril.so:/system/bin/rild|rild_socket.so"
 
     symlink /data/tombstones /tombstones
 
