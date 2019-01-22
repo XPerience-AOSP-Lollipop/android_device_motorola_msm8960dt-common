@@ -47,6 +47,7 @@ BOARD_KERNEL_LZ4C_DT 	   := true
 LZMA_RAMDISK_TARGETS 	   := recovery
 BOARD_KERNEL_CMDLINE       := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2 androidboot.write_protect=0
 BOARD_KERNEL_CMDLINE       += androidboot.selinux=permissive
+BOARD_KERNEL_IMAGE_NAME    := zImage
 BOARD_KERNEL_BASE          := 0x80200000
 BOARD_KERNEL_PAGESIZE      := 2048
 BOARD_KERNEL_SEPARATED_DT  := true
