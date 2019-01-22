@@ -80,7 +80,6 @@ NUM_FRAMEBUFFER_SURFACE_BUFFERS     := 3
 TARGET_DISPLAY_USE_RETIRE_FENCE     := true
 TARGET_USES_C2D_COMPOSITION         := true
 TARGET_USES_ION                     := true
-USE_OPENGL_RENDERER                 := true
 
 # Flags
 BOARD_USES_LEGACY_MMAP := true
@@ -97,6 +96,10 @@ TARGET_USERIMAGES_USE_EXT4              := true
 TARGET_USERIMAGES_USE_F2FS              := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE       := ext4
 TARGET_RECOVERY_DENSITY                 := xhdpi
+
+# Render
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+USE_OPENGL_RENDERER := true
 
 # RIL
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril/
