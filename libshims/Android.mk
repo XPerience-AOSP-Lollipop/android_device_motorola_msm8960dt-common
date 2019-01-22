@@ -63,7 +63,7 @@ LOCAL_SHARED_LIBRARIES := \
     libutils \
     liblog \
     libbase \
-    libgui
+    libsensor
 include $(BUILD_SHARED_LIBRARY)
 
 include $(CLEAR_VARS)
