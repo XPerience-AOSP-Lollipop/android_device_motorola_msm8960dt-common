@@ -99,8 +99,9 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
+    android.hardware.camera.provider@2.4-impl-legacy \
     camera.msm8960 \
-    Snap
+    Camera2
 
 # Compat
 PRODUCT_PACKAGES += \
@@ -140,6 +141,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl
 
+# HIDL
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/manifest.xml:system/vendor/manifest.xml
+
 # IRSC
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
@@ -150,6 +155,7 @@ PRODUCT_COPY_FILES += \
 
 # Keystore
 PRODUCT_PACKAGES += \
+    android.hardware.keymaster@3.0-impl \
     keystore.msm8960
 
 # lights
@@ -197,6 +203,7 @@ PRODUCT_PACKAGES += \
 
 # Power HAL
 PRODUCT_PACKAGES += \
+    android.hardware.power@1.0-impl \
     power.msm8960
 
 # Ramdisk
@@ -218,6 +225,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
 
+# Sensors 
+PRODUCT_PACKAGES += \
+    android.hardware.sensors@1.0-impl
+
 # Support
 PRODUCT_PACKAGES += \
     libcurl \
@@ -226,6 +237,15 @@ PRODUCT_PACKAGES += \
 # Telephony-ext
 PRODUCT_PACKAGES += telephony-ext
 PRODUCT_BOOT_JARS += telephony-ext
+
+# USB
+PRODUCT_PACKAGES += \
+    android.hardware.usb@1.0-service \
+    com.android.future.usb.accessory	    
+
+# Vibrator
+PRODUCT_PACKAGES += \
+    android.hardware.vibrator@1.0-impl
 
 # WiFi HAL
 PRODUCT_PACKAGES += \
