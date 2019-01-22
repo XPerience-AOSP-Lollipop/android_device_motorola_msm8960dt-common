@@ -454,7 +454,7 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
-    seclabel u:r:bluetooth_loader:s0
+    #seclabel u:r:bluetooth_loader:s0
     disabled
     oneshot
 
@@ -466,7 +466,7 @@ service irsc_util /vendor/bin/irsc_util "/etc/sec_config"
 service mmi-boot-sh /system/bin/sh /system/etc/init.mmi.boot.sh
     class core
     user root
-    seclabel u:r:mmi_boot:s0
+    #seclabel u:r:mmi_boot:s0
     oneshot
 
 service ril-daemon /vendor/bin/hw/rild
@@ -545,7 +545,7 @@ service wcnss_trigger /system/bin/sh /system/etc/init.qcom.wifi.sh ${ro.serialno
     class main
     user root
     group root
-    seclabel u:r:wcnss_service:s0
+    #seclabel u:r:wcnss_service:s0
     oneshot
 
 # WPA
@@ -607,4 +607,4 @@ service charge_only_mode /system/bin/charge_only_mode
     user root
     group graphics system input
     disabled
-    seclabel u:r:charger:s0
+    #seclabel u:r:charger:s0

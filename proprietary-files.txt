@@ -248,11 +248,5 @@ lib/libTimeService.so
 # UI
 vendor/lib/libuiblur.so
 
-# Widevine
-framework/com.google.widevine.software.drm.jar
-vendor/lib/drm/libdrmwvmplugin.so
-vendor/lib/libdrmdecrypt.so
-vendor/lib/libwvdrm_L3.so
-vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L3.so
-vendor/lib/mediadrm/libwvdrmengine.so
+# WideVine - from angler
+vendor/lib/mediadrm/libwvdrmengine.so|66ba66d047044f92eb0eada1faf6a5799ded90ab
