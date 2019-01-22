@@ -1,6 +1,6 @@
 # Bluetooth
-bin/btnvtool
-bin/hci_qcomm_init
+bin/btnvtool:vendor/bin/btnvtool
+bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
 lib/libbtnv.so
 
 # Audio
@@ -11,7 +11,7 @@ etc/firmware/aonvr1.bin
 etc/firmware/aonvr2.bin
 
 # Camera
-bin/mm-qcamera-daemon
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
 lib/hw/camera.msm8960.so:lib/hw/camera.vendor.msm8960.so
 lib/libadsprpc.so
 lib/libAisAdapter.so
@@ -113,7 +113,7 @@ lib/libqc-opt.so
 vendor/lib/libqti-perfd-client.so
 
 # Security
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
 vendor/lib/libssd.so
 vendor/lib/librpmb.so
 lib/libdrmfs.so
@@ -193,14 +193,14 @@ etc/firmware/vidc.mdt
 etc/firmware/vidc_1080p.fw
 
 # Motorola
-bin/batt_health
-bin/dbvc_atvc_property_set
+bin/batt_health:vendor/bin/batt_health
+bin/dbvc_atvc_property_set:vendor/bin/dbvc_atvc_property_set
 
 # MSP firmware
 bin/msp430
 
 # Qualcomm framework
-bin/irsc_util
+bin/irsc_util:vendor/bin/irsc_util
 lib/libdsutils.so
 lib/libdsi_netctrl.so
 lib/libidl.so
@@ -221,12 +221,12 @@ vendor/lib/libqmi_encdec.so
 bin/bootmodem
 bin/efsks
 bin/ks
-bin/netmgrd
+bin/netmgrd:vendor/bin/netmgrd
 bin/qcks
 bin/qmi_motext_hook
-bin/qmuxd
+bin/qmuxd:vendor/bin/qmuxd
 bin/rild
-bin/rmt_storage
+bin/rmt_storage:vendor/bin/rmt_storage
 lib/libadropbox.so
 lib/libmdmcutback.so
 lib/libmotext_inf.so
@@ -241,12 +241,18 @@ lib/hw/sensors.msm8960.so
 
 # Time services
 -app/TimeService/TimeService.apk
-bin/time_daemon
+bin/time_daemon:vendor/bin/time_daemon
 -lib/libtime_genoff.so
 lib/libTimeService.so
 
 # UI
 vendor/lib/libuiblur.so
 
-# WideVine - from angler
-vendor/lib/mediadrm/libwvdrmengine.so|66ba66d047044f92eb0eada1faf6a5799ded90ab
+# Widevine
+framework/com.google.widevine.software.drm.jar
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libdrmdecrypt.so
+vendor/lib/libwvdrm_L3.so
+vendor/lib/libwvm.so
+vendor/lib/libWVStreamControlAPI_L3.so
+vendor/lib/mediadrm/libwvdrmengine.so

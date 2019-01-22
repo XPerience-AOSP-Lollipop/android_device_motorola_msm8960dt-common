@@ -414,7 +414,7 @@ service adspd /system/bin/adspd /dev/ttyHS3
     user audio
     group audio input diag
 
-service atvc_core /system/bin/dbvc_atvc_property_set
+service atvc_core /vendor/bin/dbvc_atvc_property_set
     class core
     user oem_5012
     group oem_5007
@@ -433,7 +433,7 @@ on property:net.tethering.on=0
 on property:net.tethering.on=1
     write /sys/module/bam_dmux/parameters/adaptive_timer_enabled 0
 
-service batt_health /system/bin/batt_health
+service batt_health /vendor/bin/batt_health
     class main
     user oem_5001
     group oem_5001
@@ -458,7 +458,7 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     disabled
     oneshot
 
-service irsc_util /system/bin/irsc_util "/etc/sec_config"
+service irsc_util /vendor/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
@@ -499,27 +499,27 @@ service msp430restart /system/bin/msp430 readwrite 01 00 23 00 01 01
 on property:ro.use_data_netmgrd=false
     stop netmgrd
 
-service netmgrd /system/bin/netmgrd
+service netmgrd /vendor/bin/netmgrd
     class main
     user root
     group root wifi wakelock radio
 
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
 
-service qmuxd /system/bin/qmuxd
+service qmuxd /vendor/bin/qmuxd
     class main
     user radio
     group radio audio bluetooth gps diag
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /vendor/bin/qseecomd
     class late_start
     user root
     group root
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
@@ -536,7 +536,7 @@ service thermald /system/bin/thermald
     user root
     group root
 
-service time_daemon /system/bin/time_daemon
+service time_daemon /vendor/bin/time_daemon
     class late_start
     user root
     group root

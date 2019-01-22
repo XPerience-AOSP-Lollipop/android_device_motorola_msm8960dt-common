@@ -100,6 +100,7 @@ TARGET_USERIMAGES_USE_F2FS              := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE       := ext4
 TARGET_RECOVERY_DENSITY                 := xhdpi
 
+
 # Render
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 USE_OPENGL_RENDERER := true
@@ -123,6 +124,7 @@ BOARD_HOSTAPD_PRIVATE_LIB           := lib_driver_cmd_qcwcn
 BOARD_WLAN_DEVICE                   := qcwcn
 BOARD_WPA_SUPPLICANT_DRIVER         := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB    := lib_driver_cmd_qcwcn
+PRODUCT_VENDOR_MOVE_ENABLED         := true
 WIFI_DRIVER_FW_PATH_AP              := "ap"
 WIFI_DRIVER_FW_PATH_STA             := "sta"
 WPA_SUPPLICANT_VERSION              := VER_0_8_X

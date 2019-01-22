@@ -9,10 +9,10 @@
 /system/bin/adspd                                                                   u:object_r:adspd_exec:s0
 
 # atvc
-/system/bin/dbvc_atvc_property_set                                                  u:object_r:atvc_exec:s0
+/system/vendor/bin/dbvc_atvc_property_set                                                  u:object_r:atvc_exec:s0
 
 # batt_health
-/system/bin/batt_health                                                             u:object_r:batt_health_exec:s0
+/system/vendor/bin/batt_health                                                             u:object_r:batt_health_exec:s0
 /data/power_supply_logger(/.*)?                                                     u:object_r:batt_health_data_file:s0
 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_auto_enable   u:object_r:sysfs_batt_health:s0
 /sys/devices/platform/msm_ssbi.0/pm8921-core/pm8921-charger/force_chg_fail_clear    u:object_r:sysfs_batt_health:s0
@@ -31,7 +31,7 @@
 # Bluetooth
 #/dev/smd3                                                                           u:object_r:hci_attach_dev:s0
 /persist/.bt_nv.bin                                                                 u:object_r:persist_bluetooth_file:s0
-/system/bin/hci_qcomm_init                                                          u:object_r:hci_attach_exec:s0
+/system/vendor/bin/hci_qcomm_init                                                          u:object_r:hci_attach_exec:s0
 #/system/etc/init\.qcom\.bt\.sh                                                      u:object_r:bluetooth_loader_exec:s0
 
 # bootmodem
