@@ -38,8 +38,6 @@ TARGET_CPU_ABI2                         := armeabi
 TARGET_CPU_SMP 							:= true
 TARGET_CPU_VARIANT                      := krait
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION     := true
-TARGET_GLOBAL_CFLAGS 					+= -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS 					+= -mfpu=neon -mfloat-abi=softfp
 
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK    := $(LOCAL_PATH)/mkbootimg.mk
