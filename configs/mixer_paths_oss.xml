@@ -16,15 +16,15 @@
 	<ctl name="AUX_PCM_RX Audio Mixer MultiMedia5" value="0" />
 	<ctl name="AUX_PCM_RX_Voice Mixer CSVoice" value="0" />
 	<ctl name="AUX_PCM_RX_Voice Mixer Voip" value="0" />
-	<ctl name="MI2S_GROUP_RX_0 Audio Mixer MultiMedia1" value="0" />
-	<ctl name="MI2S_RX Audio Mixer MultiMedia2" value="0" />
-	<ctl name="MI2S_RX Audio Mixer MultiMedia3" value="0" />
-	<ctl name="MI2S_GROUP_RX_0 Audio Mixer MultiMedia4" value="0" />
-	<ctl name="MI2S_GROUP_RX_0 Audio Mixer MultiMedia5" value="0" />
-	<ctl name="MI2S_GROUP_RX_1 Audio Mixer MultiMedia7" value="0" />
-	<ctl name="MI2S_GROUP_RX_1 Audio Mixer MultiMedia8" value="0" />
-	<ctl name="MI2S_RX_Voice Mixer CSVoice" value="0" />
-	<ctl name="MI2S_RX_Voice Mixer Voip" value="0" />
+	<ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="0" />
+	<ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia2" value="0" />
+	<ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia3" value="0" />
+    <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="0" />
+    <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="0" />
+	<ctl name="SLIMBUS_1_RX Audio Mixer MultiMedia7" value="0" />
+	<ctl name="SLIMBUS_1_RX Audio Mixer MultiMedia8" value="0" />
+	<ctl name="SLIMBUS_0_RX_Voice Mixer CSVoice" value="0" />
+	<ctl name="SLIMBUS_0_RX _Voice Mixer Voip" value="0" />
 	<ctl name="MultiMedia1 Mixer AFE_PCM_TX" value="0" />
 	<ctl name="MultiMedia1 Mixer AUX_PCM_UL_TX" value="0" />
 	<ctl name="MultiMedia1 Mixer PRI_TX" value="0" />
@@ -45,11 +45,11 @@
 	<!-- Finish initial settings -->
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
-    <!-- The following use case uses MI2S_GROUP_RX_0 and maps to  -->
+    <!-- The following use case uses SLIMBUS_0_RX and maps to  -->
     <!-- AUDIO_HAL_PLUGIN_USECASE_DEFAULT_PLAYBACK  -->
     <path name="deep-buffer-playback">
-        <ctl name="MI2S_GROUP_RX_0 Audio Mixer MultiMedia1" value="1" />
-        <ctl name="MI2S_RX Channels" value="Two" />
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
+        <ctl name="SLIMBUS_0_RX  Channels" value="Two" />
     </path>
 
     <path name="deep-buffer-playback bt-sco">
@@ -73,8 +73,8 @@
 	</path>
 
 	<path name="compress-offload-playback">
-		<ctl name="MI2S_GROUP_RX_0 Audio Mixer MultiMedia4" value="1" />
-		<ctl name="MI2S_RX Channels" value="Two" />
+		<ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="1" />
+		<ctl name="SLIMBUS_0_RX  Channels" value="Two" />
 	</path>
 
 	<!-- The following use case uses PRI_RX and maps to  -->
@@ -84,16 +84,16 @@
 		<ctl name="I2S_RX Channels" value="Two" />
 	</path>
 
-	<!-- The following use cases use MI2S_GROUP_RX_1 and maps to  -->
+	<!-- The following use cases use SLIMBUS_1_RX and maps to  -->
 	<!-- AUDIO_HAL_PLUGIN_USECASE_RES_PLAYBACK  -->
 	<path name="res-playback">
-		<ctl name="MI2S_GROUP_RX_1 Audio Mixer MultiMedia7" value="1" />
-		<ctl name="MI2S_RX Channels" value="Two" />
+		<ctl name="SLIMBUS_1_RX Audio Mixer MultiMedia7" value="1" />
+		<ctl name="SLIMBUS_0_RX  Channels" value="Two" />
 	</path>
 
 	<path name="res-playback-offload">
-		<ctl name="MI2S_GROUP_RX_1 Audio Mixer MultiMedia8" value="1" />
-		<ctl name="MI2S_RX Channels" value="Two" />
+		<ctl name="SLIMBUS_1_RX Audio Mixer MultiMedia8" value="1" />
+		<ctl name="SLIMBUS_0_RX  Channels" value="Two" />
 	</path>
 
 	<!-- The following use case uses PRI_TX and maps to  -->
@@ -118,7 +118,7 @@
         <ctl name="MultiMedia4 Mixer PRI_TX" value="1" />
     </path>
 
-    <!-- The following use case uses MI2S_RX_VOICE & PRI_TX_VOICE and -->
+    <!-- The following use case uses SLIMBUS_0_RX _VOICE & PRI_TX_VOICE and -->
     <!-- maps to AUDIO_HAL_PLUGIN_USECASE_CS_VOICE_CALL  -->
     <path name="voice-call">
         <ctl name="PRI_RX_Voice Mixer CSVoice" value="1" />
@@ -131,11 +131,11 @@
 		<ctl name="Voice_Tx Mixer AUX_PCM_TX_Voice" value="1" />
     </path>
 
-    <!-- The following use case uses MI2S_GROUP_RX_0 and maps to  -->
+    <!-- The following use case uses SLIMBUS_0_RX and maps to  -->
     <!-- AUDIO_HAL_PLUGIN_USECASE_DEFAULT_PLAYBACK  -->
     <path name="low-latency-playback">
-        <ctl name="MI2S_GROUP_RX_0 Audio Mixer MultiMedia5" value="1" />
-        <ctl name="MI2S_RX Channels" value="Two" />
+        <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia5" value="1" />
+        <ctl name="SLIMBUS_0_RX  Channels" value="Two" />
     </path>
 
     <!-- The following two use cases uses PRI_I2S_RX & PRI_TX and map to  -->
@@ -160,7 +160,7 @@
 
         <!-- 16-bit Little Endian for AGC to work -->
         <!--
-           <ctl name="I2S_0_RX Format" value="S16_LE" />
+           <ctl name="SLIMBUS_0_RX Format" value="S16_LE" />
         -->
     </path>
 
