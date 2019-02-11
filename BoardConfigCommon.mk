@@ -86,6 +86,10 @@ TARGET_USES_ION                     := true
 # Flags
 BOARD_USES_LEGACY_MMAP := true
 
+# Filesystem
+TARGET_ALLOW_LEGACY_AIDS := true
+TARGET_FS_CONFIG_GEN := $(LOCAL_PATH)/config.fs
+
 # Power HAL
 TARGET_POWERHAL_VARIANT := qcom
 
