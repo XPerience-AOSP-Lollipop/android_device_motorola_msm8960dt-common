@@ -83,7 +83,7 @@ value:9018
 value:9019
 
 [system/vendor/bin/qmuxd]
-user: AID_RADAIO
+user: AID_RADIO
 group: AID_SHELL
 mode: 0700
 caps: BLOCK_SUSPEND
