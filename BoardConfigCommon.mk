@@ -30,6 +30,9 @@ TARGET_BOARD_PLATFORM_GPU   := qcom-adreno320
 TARGET_BOOTLOADER_BOARD_NAME    := MSM8960
 TARGET_NO_BOOTLOADER            := true
 
+# Binder API version
+TARGET_USES_64_BIT_BINDER := true
+
 # Architecture
 TARGET_ARCH                             := arm
 TARGET_ARCH_VARIANT                     := armv7-a-neon
@@ -65,6 +68,8 @@ BOARD_HAVE_BLUETOOTH_QCOM   := true
 BLUETOOTH_HCI_USE_MCT       := true
 
 # Camera
+TARGET_USES_MEDIA_EXTENSIONS := true
+USE_NATIVE_HANDLE_SOURCE := true
 TARGET_HAS_LEGACY_CAMERA_HAL1 	:= true
 TARGET_USES_NON_TREBLE_CAMERA := true
 USE_DEVICE_SPECIFIC_CAMERA 		:= true
