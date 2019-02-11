@@ -150,8 +150,6 @@ vendor/lib/libgeofence.so
 vendor/lib/libgsl.so
 vendor/lib/libizat_core.so
 vendor/lib/libllvm-qcom.so
-vendor/lib/libloc_api_v02.so
-vendor/lib/libloc_ds_api.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
@@ -247,9 +245,6 @@ lib/hw/sensors.msm8960.so
 bin/time_daemon:vendor/bin/time_daemon
 -lib/libtime_genoff.so
 lib/libTimeService.so
-
-# UI
-vendor/lib/libuiblur.so
 
 # WideVine - from angler
 vendor/lib/mediadrm/libwvdrmengine.so

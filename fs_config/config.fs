@@ -82,7 +82,7 @@ value:9018
 [AID_MOT_DTV]
 value:9019
 
-[system/bin/qmuxd]
+[system/vendor/bin/qmuxd]
 user: AID_RADAIO
 group: AID_SHELL
 mode: 0700
