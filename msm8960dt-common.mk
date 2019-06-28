@@ -91,6 +91,8 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8960 \
+    libshimbc_camera \
+    libshim_camera \
     Snap
 
 # Compat
